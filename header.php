@@ -71,29 +71,29 @@
                 <nav class="show-for-large">
                     <ul>
                         <li>
-                            <a href="index.html" class="icon ion-home active" title="Home"></a>
+                            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="icon ion-home <?php if(is_front_page()) echo('active'); ?>" title="Home"></a>
                             
                         </li>
                         <li>
                             
-                            <a href="search.html" class="icon ion-search" title="Search"></a>
+                            <a href="/search" class="icon ion-search <?php if(is_page('search')) echo('active'); ?>" title="Search"></a>
                         </li>
                         <li>
                             
-                            <a href="recipes.html" title="Recipes">Recipes</a>
+                            <a href="/recipes" title="Recipes" class="<?php if(is_page('recipes')) echo('active'); ?>">Recipes</a>
                         </li>
                         <li class="show-for-medium">
                             
-                            <a href="ingredients.html" title="Recipes">Ingredients</a>
+                            <a href="/ingredients" title="Ingredients" class="<?php if(is_page('ingredients')) echo('active'); ?>">Ingredients</a>
                         </li>
                         <li>
-                                <a href="gina-lioti.html" class="show-for-medium">Gina Lioti</a>
-                                <a href="gina-lioti.html" class="show-for-small-only">Gina</a>
+                                <a href="/hello" class="show-for-medium <?php if(is_page('hello')) echo('active'); ?>">Gina Lioti</a>
+                                <a href="/hello" class="show-for-small-only <?php if(is_page('hello')) echo('active'); ?>">Gina</a>
                         </li>
                     </ul>
                 </nav>
 
-                <a class="button" href="gina-lioti-cooking-club.html">COOKING CLUB</a>
+                <a class="button" href="/cooking-club" class="<?php if(is_page('cooking-club')) echo('active'); ?>">COOKING CLUB</a>
             </div>
         </div>
     </header>
@@ -101,23 +101,23 @@
     <nav class="hide-for-large">
         <ul>
             <li>
-                <a href="index.html" class="icon ion-home active" title="Home"></a>
+                <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="icon ion-home <?php if(is_front_page()) echo('active'); ?>" title="Home"></a>
                 
             </li>
             <li>
                 
-                <a href="search.html" class="icon ion-search" title="Search"></a>
+                <a href="/search" class="icon ion-search <?php if(is_page('search')) echo('active'); ?>" title="Search"></a>
             </li>
             <li>
                 
-                <a href="recipes.html" title="Recipes">Recipes</a>
+                <a href="/recipes" title="Recipes" class="<?php if(is_page('recipes')) echo('active'); ?>">Recipes</a>
             </li>
             <li class="show-for-medium">
-                <a href="ingredients.html">Ingredients</a>
+                <a href="/ingredients" class="<?php if(is_page('ingredients')) echo('active'); ?>">Ingredients</a>
             </li>
             <li>
-                <a href="gina-lioti.html" class="show-for-medium">Gina Lioti</a>
-                <a href="gina-lioti.html" class="show-for-small-only">Gina</a>
+                <a href="/hello" class="show-for-medium <?php if(is_page('hello')) echo('active'); ?>">Gina Lioti</a>
+                <a href="/hello" class="show-for-small-only <?php if(is_page('hello')) echo('active'); ?>">Gina</a>
             </li>
         </ul>
     </nav>

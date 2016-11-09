@@ -1,16 +1,8 @@
-    <!-- GET IN TOUCH -->
-    <section>
-        <div class="row">
-            <div class="large-12 columns">
-                <h2>Get in touch</h2>
-            </div>
-        </div>
-        <ul class="list-view">
-            <li class="list-item has-indicator"><a class="contact.html">Send a message</a></li>
-            <li class="list-item"><a href="https://www.facebook.com/ginalioticooking">Facebook</a></li>
-            <li class="list-item"><a href="https://twitter.com/GinaLioti">Twitter</a></li>
-        </ul>
-    </section>
+    <?php 
+        if (!is_page(['search', 'cooking-club', 'hello'])) {
+            get_template_part( 'partial--get-in-touch' ); 
+        }
+    ?>
 
     <!-- COPYRIGHT -->
     <section>

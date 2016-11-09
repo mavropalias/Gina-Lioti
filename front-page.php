@@ -14,10 +14,10 @@
     </div>
 </section>
 
-<?php get_template_part( 'recipes-preview' ); ?>
-<?php get_template_part( 'cooking-tip' ); ?>
-<?php get_template_part( 'cooking-club-preview' ); ?>
-<?php get_template_part( 'ingredients-preview' ); ?>
+<?php get_template_part( 'partial--recipes-preview' ); ?>
+<?php get_template_part( 'partial--cooking-tip' ); ?>
+<?php get_template_part( 'partial--cooking-club-preview' ); ?>
+<?php get_template_part( 'partial--ingredients-preview' ); ?>
 
 
 <?php get_footer(); ?>

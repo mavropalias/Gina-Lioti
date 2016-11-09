@@ -218,13 +218,13 @@ function wp_get_attachment( $attachment_id ) {
 // Custom RSS feed
 // =============================================================================
 
-  add_action('init', 'customRSS');
-  function customRSS() {
-          add_feed('recipes', 'customRSSFunc');
-  }
-  function customRSSFunc() {
-          get_template_part('rss', 'recipes');
-  }
+  // add_action('init', 'customRSS');
+  // function customRSS() {
+  //         add_feed('gina-lioti-recipes', 'customRSSFunc');
+  // }
+  // function customRSSFunc() {
+  //         get_template_part('rss', 'recipes');
+  // }
 
 
 
