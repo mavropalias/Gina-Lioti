@@ -111,12 +111,10 @@ function wp_get_attachment( $attachment_id ) {
 // =============================================================================
 
   function get_rid_of_wpautop(){
-    if(is_page()){
-      remove_filter ('the_content', 'wpautop');
-      remove_filter ('the_excerpt', 'wpautop');
-    }
+    remove_filter ('the_content', 'wpautop');
+    remove_filter ('the_excerpt', 'wpautop');
   }
-  //add_action( 'template_redirect', 'get_rid_of_wpautop' );
+  // add_action( 'template_redirect', 'get_rid_of_wpautop' );
 
 
 

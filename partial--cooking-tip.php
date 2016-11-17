@@ -15,7 +15,8 @@
             if ( $query->have_posts() ) { ?>
                 <?php while ( $query->have_posts() ) : $query->the_post() ; ?>
 
-                    <em><a style="display: inline;" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></em> &mdash; <?php echo wp_strip_all_tags( get_the_content() ); ?>
+                    <!--<em><a style="display: inline;" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></em> &mdash; -->
+                    <?php echo wp_strip_all_tags( get_the_content() ); ?>
 
                 <?php endwhile; ?>
             
