@@ -1,9 +1,13 @@
 <!-- RECIPES -->
 <section>
     <div class="row column">
-        <h2><?php if (!empty($recipesToPreviewTitle)) echo $recipesToPreviewTitle; else echo "My Recipes"; ?></h2>
-        <?php if (!empty($recipesToPreviewDescription)) {
-            echo "<p>".$recipesToPreviewDescription."</p>";
+        <?php if(is_front_page()) { ?>
+            <a href="/recipes"><h2>My recipes</h2></a>
+        <?php } else { ?>
+            <h2><?php if (!empty($recipesToPreviewTitle)) echo $recipesToPreviewTitle; else echo "My Recipes"; ?></h2>
+            <?php if (!empty($recipesToPreviewDescription)) {
+                echo "<p>".$recipesToPreviewDescription."</p>";
+            } 
         } ?>
     </div>
 

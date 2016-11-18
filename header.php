@@ -1,11 +1,6 @@
 <!doctype html>
 <html <?php language_attributes(); ?>>
 <head>
-
-    <!-- Title -->
-    <!-- ======================================================================= -->
-    <title><?php wp_title( ' | ', true, 'right' ); ?></title>
-
     <!-- Meta -->
     <!-- ======================================================================= -->
     <meta charset="<?php bloginfo( 'charset' ); ?>" />
