@@ -1,7 +1,10 @@
 <!-- RECIPES -->
 <section>
     <div class="row column">
-        <a href="recipes.html"><h2>My recipes</h2></a>
+        <h2><?php if (!empty($recipesToPreviewTitle)) echo $recipesToPreviewTitle; else echo "My Recipes"; ?></h2>
+        <?php if (!empty($recipesToPreviewDescription)) {
+            echo "<p>".$recipesToPreviewDescription."</p>";
+        } ?>
     </div>
 
     <!-- RECIPE GRID -->
@@ -46,7 +49,7 @@
                             ?></span>
                         </a>
 
-                <?php endwhile; ?>
+                    <?php endwhile; ?>
                 
             <?php }
                 /* Restore original Post Data */
@@ -148,6 +151,33 @@
                 wp_reset_postdata();
 
         } // if(is_front_page())
+
+        // Else, parse the $recipesToPreview array
+        else {
+            foreach ($recipesToPreview as $recipe) { ?>
+                <a class="column recipe-preview"
+                    href="<?php echo get_permalink($recipe->ID); ?>"
+                    title="<?php echo $recipe->post_title; ?>">
+                    
+                    <?php echo(get_the_post_thumbnail($recipe->ID, 'post-thumbnail')); ?>
+                    <span class="recipe-title"><?php echo $recipe->post_title; ?></span>
+                    <span class="recipe-subtitle">
+                    <?php 
+                        $terms = get_the_terms($recipe->ID, 'post_tag');
+                        $index = 0;
+                        if ( $terms && ! is_wp_error( $terms ) ) {
+                            foreach ( $terms as $term ) {
+                                if ($index > 0) echo ', ';
+                                echo $term->name;
+                                $index++;
+                            } 
+                        }
+                    ?>
+                    </span>
+                </a>
+
+            <?php }
+        }
     ?>
     </div>
 </section>

@@ -82,10 +82,18 @@
 
 <!-- RECIPE META -->
 <section class="section--mini">
-    <div class="row small-up-2 medium-up-4 meta-grid">
+    <?php
+        // Count how many grid items will be displayed
+        $gridCount = 0;
+        if (!empty($meta['recipe_servings']) && $meta['recipe_servings'][0]) $gridCount++;
+        if (!empty($meta['recipe_prep_time']) && $meta['recipe_prep_time'][0]) $gridCount++;
+        if (!empty($meta['recipe_cook_time']) && $meta['recipe_cook_time'][0]) $gridCount++;
+        if (!empty($meta['recipe_passive_time']) && $meta['recipe_passive_time'][0]) $gridCount++;
+    ?>
+    <div class="row small-up-2 medium-up-<?php echo $gridCount; ?> meta-grid">
         <?php
             // Servings
-            if ($meta['recipe_servings'][0]) {
+            if (!empty($meta['recipe_servings']) && $meta['recipe_servings'][0]) {
                 echo "<div class='column' itemprop='recipeYield'>".
                 $meta['recipe_servings'][0]." ".
                 $meta['recipe_servings_type'][0].
@@ -93,7 +101,7 @@
             }
 
             // Prep time
-            if ($meta['recipe_prep_time'][0]) {
+            if (!empty($meta['recipe_prep_time']) && $meta['recipe_prep_time'][0]) {
 
                 $prepTimeMinutes = (int)$meta['recipe_prep_time'][0];
                 if (strrpos($meta['recipe_prep_time_text'][0], "min") === false) {
@@ -109,7 +117,7 @@
             }
 
             // Cooking time
-            if ($meta['recipe_cook_time'][0]) {
+            if (!empty($meta['recipe_cook_time']) && $meta['recipe_cook_time'][0]) {
 
                 $cookTimeMinutes = (int)$meta['recipe_cook_time'][0];
                 if (strrpos($meta['recipe_cook_time_text'][0], "min") === false) {
@@ -125,7 +133,7 @@
             }
 
             // Passive time
-            if ($meta['recipe_passive_time'][0]) {
+            if (!empty($meta['recipe_passive_time']) && $meta['recipe_passive_time'][0]) {
                 echo "<div class='column'>".
                 $meta['recipe_passive_time'][0]." ".
                 $meta['recipe_passive_time_text'][0]." wait".
@@ -134,8 +142,10 @@
         ?>
 
         <?php
-        $totalTimeMinutes = $cookTimeMinutes + $prepTimeMinutes;
-        $totalTime = time_to_iso8601_duration(strtotime(convertToHoursMins($totalTimeMinutes, '%02d hours %02d minutes'), 0));
+            $totalTimeMinutes = 0;
+            if (!empty($cookTimeMinutes)) $totalTimeMinutes += $cookTimeMinutes;
+            if (!empty($prepTimeMinutes)) $totalTimeMinutes += $prepTimeMinutes;
+            $totalTime = time_to_iso8601_duration(strtotime(convertToHoursMins($totalTimeMinutes, '%02d hours %02d minutes'), 0));
         ?>
         <time hidden datetime="<?php echo $totalTime; ?>" itemprop="totalTime"></time>
     </div>
@@ -168,7 +178,7 @@
 
 
 
-<!-- GINA'S COMMENT -->
+<!-- GINA'S COMMENT ABOUT THIS RECIPE -->
 <section class="recommended-item expanded">
     <div class="row">
         <div class="shrink columns">
@@ -185,7 +195,7 @@
 
 
 
-<!-- INTRODUCTION -->
+<!-- RECIPE DESCRIPTION -->
 <?php if (count($recipeDescription) > 1) { ?>
     <section>
         <div class="row column">
@@ -210,98 +220,61 @@
 <section>
     <div class="row column">
         <h2>Ingredients</h2>
-        <p>Click on ingredients to discover recipes</p>
+        <p>Tip: Click on ingredients to discover more recipes!</p>
     </div>
 
-    <ul class="ingredients-view">
-        <li class="ingredient">
-            <a class="ingredient-inner">
-                <div class="ingredient-thumb">
-                    <div class="hexagon-1">
-                        <div class="hexagon-2" style="background-image: url(http://ginalioti.com/wp/wp-content/uploads/greek-style-oyster-mushrooms-recipe-2-2304x1296.jpg);"></div>
+    <?php
+        foreach( $ingredientGroups as $ingredientGroup ) {
+    ?>
+        <?php if ($ingredientGroup != "") { ?>
+            <div class="row column">
+                <h3><?php echo $ingredientGroup; ?>:</h3>
+            </div>
+        <?php } ?>
+        <ul class="ingredients-view">
+            <?php
+                foreach( $ingredients as $ingredient ) {
+                    if ($ingredient['group'] == $ingredientGroup) {
+                        $ingredientTerm = get_term( $ingredient['ingredient_id'], "ingredient" );
+
+                        $plural = "";
+                        preg_match_all("/\[(.*?)\]/", $ingredient['unit'], $output);
+                        if (!empty($output[1])) $plural = $output[1][0];
+
+                        $arr = explode("[", $ingredient['unit'], 2);
+                        $unit = $arr[0];
+            ?>
+            <li class="ingredient">
+                <a class="ingredient-inner" href="<?php echo get_term_link( $ingredient['ingredient_id'], 'ingredient' ); ?>">
+                    <div class="ingredient-thumb">
+                        <div class="hexagon-1">
+                            <div class="hexagon-2" style="background-image: url(<?php echo content_url(); ?>/uploads/<?php echo $ingredientTerm->slug; ?>-48x48.jpg);"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="ingredient-details">
-                    <span class="ingredient-name">Oyster mushrooms</span>
-                    <small class="ingredient-meta">200 grams</small>
-                </div>
-            </a>
-        </li>
-        <li class="ingredient">
-            <a class="ingredient-inner">
-                <div class="ingredient-thumb">
-                    <div class="hexagon-1">
-                        <div class="hexagon-2" style="background-image: url(http://ginalioti.com/wp/wp-content/uploads/turmeric-1200x630.jpg);"></div>
+                    <div class="ingredient-details" itemprop="ingredients">
+                        <span class="ingredient-name"><?php echo $ingredient['ingredient'].$plural; ?></span>
+                        <small class="ingredient-meta">
+                            <?php
+                                if ($ingredient['notes']) {
+                            ?>
+                                    <span class="ingredient-notes"><?php echo $ingredient['notes']; ?></span>
+                            <?php
+                                    if (!empty($ingredient['amount'])) echo "&nbsp;&mdash;&nbsp;";
+                                }
+                            ?>
+                            <?php echo $ingredient['amount']." ".$unit; ?>
+                        </small>
                     </div>
-                </div>
-                <div class="ingredient-details">
-                    <span class="ingredient-name">Extra virgin olive oil</span>
-                </div>
-            </a>
-        </li>
-        <li class="ingredient">
-            <a class="ingredient-inner">
-                <div class="ingredient-thumb">
-                    <div class="hexagon-1">
-                        <div class="hexagon-2" style="background-image: url(http://ginalioti.com/wp/wp-content/uploads/lemon-1200x630.jpg);"></div>
-                    </div>
-                </div>
-                <div class="ingredient-details">
-                    <span class="ingredient-name">1/2 or 1/4 lemon</span>
-                    <small class="ingredient-meta">Freshly squeezed</small>
-                </div>
-            </a>
-        </li>
-        <li class="ingredient">
-            <a class="ingredient-inner">
-                <div class="ingredient-thumb">
-                    <div class="hexagon-1">
-                        <div class="hexagon-2" style="background-image: url(http://ginalioti.com/wp/wp-content/uploads/sea-salt-2304x1296.jpg);"></div>
-                    </div>
-                </div>
-                <div class="ingredient-details">
-                    <span class="ingredient-name">Sea salt</span>
-                </div>
-            </a>
-        </li>
-        <li class="ingredient">
-            <a class="ingredient-inner">
-                <div class="ingredient-thumb">
-                    <div class="hexagon-1">
-                        <div class="hexagon-2" style="background-image: url(http://ginalioti.com/wp/wp-content/uploads/black-pepper-2304x1296.jpg);"></div>
-                    </div>
-                </div>
-                <div class="ingredient-details">
-                    <span class="ingredient-name">Black pepper</span>
-                </div>
-            </a>
-        </li>
-        <li class="ingredient">
-            <a class="ingredient-inner">
-                <div class="ingredient-thumb">
-                    <div class="hexagon-1">
-                        <div class="hexagon-2" style="background-image: url(http://ginalioti.com/wp/wp-content/uploads/oregano-1-1200x630.jpg);"></div>
-                    </div>
-                </div>
-                <div class="ingredient-details">
-                    <span class="ingredient-name">Oregano</span>
-                </div>
-            </a>
-        </li>
-        <li class="ingredient">
-            <a class="ingredient-inner">
-                <div class="ingredient-thumb">
-                    <div class="hexagon-1">
-                        <div class="hexagon-2" style="background-image: url(http://ginalioti.com/wp/wp-content/uploads/parsley-1200x630.jpg);"></div>
-                    </div>
-                </div>
-                <div class="ingredient-details">
-                    <span class="ingredient-name">Parsley</span>
-                    <small class="ingredient-meta">Freshly chopped (optional)</small>
-                </div>
-            </a>
-        </li>
-    </ul>
+                </a>
+            </li>
+            <?php
+                    }
+                }
+            ?>
+        </ul>
+    <?php
+        }
+    ?>
 </section>
 
 
@@ -312,14 +285,33 @@
 <section>
     <div class="row column">
         <h2>Instructions</h2>
-        <ol class="recipe-instructions">
-            <li tabindex="0">Rinse the mushrooms very well and dry them carefully.</li>
-            <li>Preheat oven on the grill setting (or fan/grill combination) at medium heat.</li>
-            <li>Place your mushrooms on a baking tray drizzled with a hint of olive oil, so that they do not stick. You can use a pastry brush to cover the tray.</li>
-            <li>Line the mushrooms on the tray in a single layer, slightly spaced and place in the middle shelf of your oven.</li>
-            <li>Halfway through cooking, turn them. When they are starting to become golden at their edges and they are tender, they are ready.</li>
-            <li>Put them on a plate and drizzle with lemon juice and olive oil. Sprinkle with oregano, salt and black pepper and chop a little parsley on top of them. Serve immediately.</li>
-        </ol>
+        <?php
+            foreach( $directionGroups as $directionGroup ) {
+        ?>
+            <?php if ($directionGroup != "") { ?><h3><?php echo $directionGroup; ?></h3><?php } ?>
+            <ol class="recipe-instructions">
+            <?php
+                foreach( $directions as $direction ) {
+                    if ($direction['group'] == $directionGroup) {
+            ?>
+                    <li itemprop="recipeInstructions">
+                        <?php echo $direction['description']; ?>
+                    </li>
+            <?php
+                    }
+                }
+            ?>
+            </ol>
+        <?php
+            }
+        ?>
+
+        <!-- FINAL NOTES -->
+        <?php if ($meta['recipe_description'][0]) { ?>
+        <br>
+        <h3>Final notes</h3>
+        <p><?php echo $meta['recipe_description'][0]; ?></p>
+        <?php } ?>
     </div>
 </section>
 
@@ -341,25 +333,24 @@
 
 
 
-<!-- RELATED COLLECTIONS -->
-<section>
-    <div class="row">
-        <div class="large-12 columns">
-            <h2>This recipe is part of these collections:</h2>
-        </div>
-    </div>
-    <ul class="list-view">
-        <li class="list-item has-indicator"><a>10 Summer sides</a></li>
-        <li class="list-item"><a>Food you loved in Greece</a></li>
-        <li class="list-item"><a>Traditionally Greek</a></li>
-    </ul>
-</section>
-
-
-
-
 <?php get_template_part( 'partial--cooking-club-preview' ); ?>
 
-<?php get_template_part( 'partial--recipes-preview' ); ?>
+
+
+
+
+<!-- COMPLEMENTARY RECIPES -->
+<!-- ======================================================================= -->
+
+<?php
+    set_query_var( 'recipesToPreviewTitle', "Hand–picked complementary dishes" );
+    set_query_var( 'recipesToPreviewDescription', "These recipes go great with ".get_the_title() );
+    set_query_var( 'recipesToPreview', bawmrp_get_all_related_posts($post) );
+    get_template_part( 'partial--recipes-preview' );
+?>
+
+
+
+
 
 <?php get_footer(); ?>

@@ -1,4 +1,30 @@
 <?php
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// OLD FUNCTIONS
+// =======================================================
+
 add_action( 'after_setup_theme', 'ginalioti_setup' );
 function ginalioti_setup()
 {

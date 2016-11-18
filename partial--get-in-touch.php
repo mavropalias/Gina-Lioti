@@ -2,7 +2,7 @@
     <section>
         <div class="row">
             <div class="large-12 columns">
-                <h2>Get in touch</h2>
+                <h3>Get in touch</h3>
             </div>
         </div>
         <ul class="list-view">
