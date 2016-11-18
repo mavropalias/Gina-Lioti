@@ -352,7 +352,7 @@
 <!-- LOVE AND SHARE -->
 <!-- ======================================================================= -->
 
-    <section>
+    <section class="hide">
         <div class="row column">
             <a class="love-this">
                 <i class="ion-android-favorite-outline"></i>
