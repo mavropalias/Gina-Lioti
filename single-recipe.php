@@ -5,6 +5,7 @@
   $meta = get_post_meta( get_the_ID() );
   $ingredients = unserialize($meta['recipe_ingredients'][0]);
   $directions = unserialize($meta['recipe_instructions'][0]);
+  $primaryIngredient = "";
 
   // Ingredient groups
   $ingredientGroups = array();
@@ -263,6 +264,9 @@
                 <?php
                     foreach( $ingredients as $ingredient ) {
                         if ($ingredient['group'] == $ingredientGroup) {
+                            // initialize $primaryIngredient, if empty
+                            if (strlen($primaryIngredient) == 0) $primaryIngredient = $ingredient['ingredient'];
+
                             $ingredientTerm = get_term( $ingredient['ingredient_id'], "ingredient" );
 
                             $plural = "";
@@ -271,31 +275,31 @@
 
                             $arr = explode("[", $ingredient['unit'], 2);
                             $unit = $arr[0];
-                ?>
-                <li class="ingredient">
-                    <a class="ingredient-inner" href="<?php echo get_term_link( $ingredient['ingredient_id'], 'ingredient' ); ?>">
-                        <div class="ingredient-thumb">
-                            <div class="hexagon-1">
-                                <div class="hexagon-2" style="background-image: url(<?php echo content_url(); ?>/uploads/<?php echo $ingredientTerm->slug; ?>-600x315.jpg);"></div>
-                            </div>
-                        </div>
-                        <div class="ingredient-details" itemprop="ingredients">
-                            <span class="ingredient-name"><?php echo $ingredient['ingredient'].$plural; ?></span>
-                            <small class="ingredient-meta">
-                                <?php
-                                    if ($ingredient['notes']) {
-                                ?>
-                                        <span class="ingredient-notes"><?php echo $ingredient['notes']; ?></span>
-                                <?php
-                                        if (!empty($ingredient['amount'])) echo "&nbsp;&mdash;&nbsp;";
-                                    }
-                                ?>
-                                <?php echo $ingredient['amount']." ".$unit; ?>
-                            </small>
-                        </div>
-                    </a>
-                </li>
-                <?php
+                        ?>
+                        <li class="ingredient">
+                            <a class="ingredient-inner" href="<?php echo get_term_link( $ingredient['ingredient_id'], 'ingredient' ); ?>">
+                                <div class="ingredient-thumb">
+                                    <div class="hexagon-1">
+                                        <div class="hexagon-2" style="background-image: url(<?php echo content_url(); ?>/uploads/<?php echo $ingredientTerm->slug; ?>-600x315.jpg);"></div>
+                                    </div>
+                                </div>
+                                <div class="ingredient-details" itemprop="ingredients">
+                                    <span class="ingredient-name"><?php echo $ingredient['ingredient'].$plural; ?></span>
+                                    <small class="ingredient-meta">
+                                        <?php
+                                            if ($ingredient['notes']) {
+                                        ?>
+                                                <span class="ingredient-notes"><?php echo $ingredient['notes']; ?></span>
+                                        <?php
+                                                if (!empty($ingredient['amount'])) echo "&nbsp;&mdash;&nbsp;";
+                                            }
+                                        ?>
+                                        <?php echo $ingredient['amount']." ".$unit; ?>
+                                    </small>
+                                </div>
+                            </a>
+                        </li>
+                        <?php
                         }
                     }
                 ?>
@@ -378,10 +382,12 @@
 <!-- ======================================================================= -->
 
     <?php
-        set_query_var( 'recipesToPreviewTitle', "Hand–picked complementary dishes" );
-        set_query_var( 'recipesToPreviewDescription', "These recipes go great with ".get_the_title()."." );
-        set_query_var( 'recipesToPreview', bawmrp_get_all_related_posts($post) );
-        get_template_part( 'partial--recipes-preview' );
+        if (count(bawmrp_get_all_related_posts($post)) > 0) {
+            set_query_var( 'recipesToPreviewTitle', "Hand–picked complementary dishes" );
+            set_query_var( 'recipesToPreviewDescription', "These recipes go great with ".get_the_title()."." );
+            set_query_var( 'recipesToPreview', bawmrp_get_all_related_posts($post) );
+            get_template_part( 'partial--recipes-preview' );
+        }
     ?>
 
 
@@ -396,6 +402,8 @@
         $args = array(
             'post_type' => 'recipe',
             'posts_per_page' => 4,
+            'post__not_in' => [$post->ID],
+            'orderby' => 'rand',
             'tax_query' => array(
                 array(
                     'taxonomy' => 'course',
@@ -407,10 +415,46 @@
         // The query
         $query = new WP_Query( $args );
 
-        set_query_var( 'recipesToPreviewTitle', "More ".$courses[0]."-dish recipes" );
-        set_query_var( 'recipesToPreviewDescription', null );
-        set_query_var( 'recipesToPreview', $query->posts );
-        get_template_part( 'partial--recipes-preview' );
+        if ($query->found_posts > 0) {
+            set_query_var( 'recipesToPreviewTitle', "More ".$courses[0]."-dish recipes" );
+            set_query_var( 'recipesToPreviewDescription', null );
+            set_query_var( 'recipesToPreview', $query->posts );
+            get_template_part( 'partial--recipes-preview' );
+        }
+    ?>
+
+
+
+
+
+<!-- SAME INGREDIENT -->
+<!-- ======================================================================= -->
+
+    <?php
+        $_recipesToPreview = [];
+        $args = array(
+            'post_type' => 'recipe',
+            'posts_per_page' => 4,
+            'post__not_in' => [$post->ID],
+            'orderby' => 'rand',
+            's' => $primaryIngredient,
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'course',
+                    'field'    => 'name',
+                    'terms'    => $courses,
+                ),
+            ),
+        );
+        // The query
+        $query = new WP_Query( $args );
+
+        if ($query->found_posts > 0) {
+            set_query_var( 'recipesToPreviewTitle', ucfirst($primaryIngredient)." recipes" );
+            set_query_var( 'recipesToPreviewDescription', null );
+            set_query_var( 'recipesToPreview', $query->posts );
+            get_template_part( 'partial--recipes-preview' );
+        }
     ?>
 
 
