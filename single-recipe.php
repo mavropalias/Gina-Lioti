@@ -382,7 +382,7 @@
 <!-- ======================================================================= -->
 
     <?php
-        if (count(bawmrp_get_all_related_posts($post)) > 0) {
+        if (count(bawmrp_get_related_posts($post->ID)) > 0) {
             set_query_var( 'recipesToPreviewTitle', "Hand–picked complementary recipes" );
             set_query_var( 'recipesToPreviewDescription', "These dishes go great with ".get_the_title()."." );
             set_query_var( 'recipesToPreview', bawmrp_get_all_related_posts($post) );
@@ -451,7 +451,7 @@
 
         if ($query->found_posts > 0) {
             $message = "Here's one more recipe with ".$primaryIngredient." as an ingredient.";
-            if( $query->found_posts > 1 ) $message = "Here are ".$query->found_posts." more recipes with ".$primaryIngredient." as an ingredient."; 
+            if( $query->found_posts > 1 ) $message = "Here are ".$query->post_count." more recipes with ".$primaryIngredient." as an ingredient."; 
 
             set_query_var( 'recipesToPreviewTitle', ucfirst($primaryIngredient)." recipes" );
             set_query_var( 'recipesToPreviewDescription', "Love ".$primaryIngredient."? ".$message );
