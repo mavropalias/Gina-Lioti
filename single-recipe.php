@@ -383,8 +383,8 @@
 
     <?php
         if (count(bawmrp_get_all_related_posts($post)) > 0) {
-            set_query_var( 'recipesToPreviewTitle', "Hand–picked complementary dishes" );
-            set_query_var( 'recipesToPreviewDescription', "These recipes go great with ".get_the_title()."." );
+            set_query_var( 'recipesToPreviewTitle', "Hand–picked complementary recipes" );
+            set_query_var( 'recipesToPreviewDescription', "These dishes go great with ".get_the_title()."." );
             set_query_var( 'recipesToPreview', bawmrp_get_all_related_posts($post) );
             get_template_part( 'partial--recipes-preview' );
         }
@@ -450,8 +450,11 @@
         $query = new WP_Query( $args );
 
         if ($query->found_posts > 0) {
+            $message = "Here's one more recipe with ".$primaryIngredient." as an ingredient.";
+            if( $query->found_posts > 1 ) $message = "Here are ".$query->found_posts." more recipes with ".$primaryIngredient." as an ingredient."; 
+
             set_query_var( 'recipesToPreviewTitle', ucfirst($primaryIngredient)." recipes" );
-            set_query_var( 'recipesToPreviewDescription', null );
+            set_query_var( 'recipesToPreviewDescription', "Love ".$primaryIngredient."? ".$message );
             set_query_var( 'recipesToPreview', $query->posts );
             get_template_part( 'partial--recipes-preview' );
         }

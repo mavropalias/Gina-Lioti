@@ -1,4 +1,24 @@
+<?php
+    $max_ingredients = 6;
+    $args = array(
+        'taxonomy' => 'ingredient',
+        'hide_empty' => true
+    );
 
+    // Get all ingredients
+    $ingredients_raw = get_terms( $args );
+
+    // Keep only ingredients with photos
+    $ingredients_with_photos = [];
+    foreach( $ingredients_raw as $ingredient ) {
+        if (strlen(z_taxonomy_image_url($ingredient->term_id)) > 0) $ingredients_with_photos[] = $ingredient; 
+    }
+
+    shuffle($ingredients_with_photos);
+
+    $ingredients = array_slice($ingredients_with_photos, 0, $max_ingredients);
+
+?>
 
 <!-- INGREDIENTS PREVIEW -->
 <section>
@@ -10,83 +30,25 @@
     </div>
 
     <ul class="ingredients-view">
-        <li class="ingredient">
-            <a class="ingredient-inner">
-                <div class="ingredient-thumb">
-                    <div class="hexagon-1">
-                        <div class="hexagon-2" style="background-image: url(http://ginalioti.com/wp/wp-content/uploads/turmeric-1200x630.jpg);"></div>
+        <?php foreach( $ingredients as $ingredient ) { ?>
+            <li class="ingredient">
+                <a class="ingredient-inner" 
+                    title="<?php echo ucfirst($ingredient->name); ?> recipes"
+                    href="<?php echo get_category_link($ingredient->term_id); ?>">
+                    <div class="ingredient-thumb">
+                        <div class="hexagon-1">
+                            <div class="hexagon-2" title="<?php echo ucfirst($ingredient->name); ?>" style="background-image: url(<?php 
+                                if (function_exists('z_taxonomy_image_url')) {
+                                    echo(z_taxonomy_image_url($ingredient->term_id, 'ingredient-thumb' )); 
+                                }?>);"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="ingredient-details">
-                    <span class="ingredient-name">Extra virgin olive oil</span>
-                    <small class="ingredient-meta">24 recipes</small>
-                </div>
-            </a>
-        </li>
-        <li class="ingredient">
-            <a class="ingredient-inner">
-                <div class="ingredient-thumb">
-                    <div class="hexagon-1">
-                        <div class="hexagon-2" style="background-image: url(http://ginalioti.com/wp/wp-content/uploads/lemon-1200x630.jpg);"></div>
+                    <div class="ingredient-details">
+                        <span class="ingredient-name"><?php echo ucfirst($ingredient->name); ?></span>
+                        <small class="ingredient-meta"><?php echo $ingredient->count; ?> recipe<?php if($ingredient->count > 1) echo "s"; ?></small>
                     </div>
-                </div>
-                <div class="ingredient-details">
-                    <span class="ingredient-name">Lemon</span>
-                    <small class="ingredient-meta">18 recipes</small>
-                </div>
-            </a>
-        </li>
-        <li class="ingredient">
-            <a class="ingredient-inner">
-                <div class="ingredient-thumb">
-                    <div class="hexagon-1">
-                        <div class="hexagon-2" style="background-image: url(http://ginalioti.com/wp/wp-content/uploads/sea-salt-2304x1296.jpg);"></div>
-                    </div>
-                </div>
-                <div class="ingredient-details">
-                    <span class="ingredient-name">Sea salt</span>
-                    <small class="ingredient-meta">11 recipes</small>
-                </div>
-            </a>
-        </li>
-        <li class="ingredient">
-            <a class="ingredient-inner">
-                <div class="ingredient-thumb">
-                    <div class="hexagon-1">
-                        <div class="hexagon-2" style="background-image: url(http://ginalioti.com/wp/wp-content/uploads/black-pepper-2304x1296.jpg);"></div>
-                    </div>
-                </div>
-                <div class="ingredient-details">
-                    <span class="ingredient-name">Black pepper</span>
-                    <small class="ingredient-meta">15 recipes</small>
-                </div>
-            </a>
-        </li>
-        <li class="ingredient">
-            <a class="ingredient-inner">
-                <div class="ingredient-thumb">
-                    <div class="hexagon-1">
-                        <div class="hexagon-2" style="background-image: url(http://ginalioti.com/wp/wp-content/uploads/oregano-1-1200x630.jpg);"></div>
-                    </div>
-                </div>
-                <div class="ingredient-details">
-                    <span class="ingredient-name">Oregano</span>
-                    <small class="ingredient-meta">20 recipes</small>
-                </div>
-            </a>
-        </li>
-        <li class="ingredient">
-            <a class="ingredient-inner">
-                <div class="ingredient-thumb">
-                    <div class="hexagon-1">
-                        <div class="hexagon-2" style="background-image: url(http://ginalioti.com/wp/wp-content/uploads/parsley-1200x630.jpg);"></div>
-                    </div>
-                </div>
-                <div class="ingredient-details">
-                    <span class="ingredient-name">Parsley</span>
-                    <small class="ingredient-meta">4 recipes</small>
-                </div>
-            </a>
-        </li>
+                </a>
+            </li>
+        <?php } ?>
     </ul>
 </section>

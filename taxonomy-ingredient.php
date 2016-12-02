@@ -78,7 +78,7 @@
                 <img class="thumb" src="<?php echo get_template_directory_uri(); ?>/assets/img/gina_lioti_advice.jpg">
             </div>
             <div class="columns">
-                <p class="lead">“I have prepared <?php echo $query->found_posts; ?> recipes with <?php single_term_title(); ?>. I want you to enjoy them and think you will.”</p>
+                <p class="lead">“I have prepared <?php echo $query->found_posts; ?> recipe<?php if( $query->found_posts > 1 ) echo "s"; ?> with <?php single_term_title(); ?>. I want you to enjoy <?php if( $query->found_posts > 1 ) echo "them"; else echo "it"; ?> and think you will.”</p>
                 <cite>Gina Lioti</cite>
             </div>
         </div>
@@ -110,7 +110,10 @@
 
     <?php
         if ($query->found_posts > 0) {
-            set_query_var( 'recipesToPreviewTitle', "My ".$query->found_posts." recipes with ".single_term_title(null, false) );
+            $plural = "";
+            if( $query->found_posts > 1 ) $plural = "s";
+
+            set_query_var( 'recipesToPreviewTitle', "My ".$query->found_posts." recipe".$plural." with ".single_term_title(null, false) );
             set_query_var( 'recipesToPreviewDescription', null );
             set_query_var( 'recipesToPreview', $query->posts );
             get_template_part( 'partial--recipes-preview' );

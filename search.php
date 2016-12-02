@@ -36,7 +36,7 @@
             // default search parameters
             $search_term = "";
             $search_tag = "";
-            $search_taxonomy = ["main", "side", "dessert"];
+            $search_taxonomy = ['main', 'savoury', 'sweet'];
 
 
             $search_parameters = explode("&", $query_string);
@@ -80,14 +80,14 @@
                 $custom_search_query = new WP_Query($search_query_args);
 
                 if ($custom_search_query->found_posts > 0) {
-                    set_query_var( 'recipesToPreviewTitle', $custom_search_query->found_posts." recipes with ".$search_term.":" );
+                    set_query_var( 'recipesToPreviewTitle', $custom_search_query->found_posts." recipes with <em>".$search_term."</em>:" );
                     set_query_var( 'recipesToPreviewDescription', null );
                     set_query_var( 'recipesToPreview', $custom_search_query->posts );
                     get_template_part( 'partial--recipes-preview' );
                 } else { ?>
                     <section>
                         <div class="row column">
-                            <h2>No recipes widh <?php echo $search_term; ?>, yet :(</h2>
+                            <h2>No recipes with <em><?php echo $search_term; ?></em>, yet :(</h2>
                             <p class="lead">Subscribe to get my updates:</p>
                         </div>
                     </section>
