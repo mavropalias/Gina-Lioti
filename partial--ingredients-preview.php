@@ -1,10 +1,12 @@
+
+
 <!-- INGREDIENTS PREVIEW -->
 <section>
     <div class="row column">
         <a>
             <h2>Ingredients</h2>
         </a>
-        <p>Explore recipes based on an ingredient</p>
+        <p>Discover recipes based on an ingredient</p>
     </div>
 
     <ul class="ingredients-view">

@@ -226,7 +226,7 @@
     <?php if (count($recipeDescription) > 1) { ?>
         <section>
             <div class="row column">
-                <h2>Here’s why you’re going to love this</h1>
+                <h2>Here’s why you’re going to love this</h2>
 
                 <p class="lead"><?php echo $recipeDescription[1]; ?></p>
 
