@@ -23,9 +23,7 @@
 <!-- INGREDIENTS PREVIEW -->
 <section>
     <div class="row column">
-        <a>
-            <h2>Ingredients</h2>
-        </a>
+        <h2>Featured ingredients</h2>
         <p>Discover recipes based on an ingredient</p>
     </div>
 
