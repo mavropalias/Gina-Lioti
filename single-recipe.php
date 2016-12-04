@@ -394,39 +394,6 @@
 
 
 
-<!-- SIMILAR RECIPES -->
-<!-- ======================================================================= -->
-
-    <?php
-        $_recipesToPreview = [];
-        $args = array(
-            'post_type' => 'recipe',
-            'posts_per_page' => 4,
-            'post__not_in' => [$post->ID],
-            'orderby' => 'rand',
-            'tax_query' => array(
-                array(
-                    'taxonomy' => 'course',
-                    'field'    => 'name',
-                    'terms'    => $courses,
-                ),
-            ),
-        );
-        // The query
-        $query = new WP_Query( $args );
-
-        if ($query->found_posts > 0) {
-            set_query_var( 'recipesToPreviewTitle', "More ".$courses[0]."-dish recipes" );
-            set_query_var( 'recipesToPreviewDescription', null );
-            set_query_var( 'recipesToPreview', $query->posts );
-            get_template_part( 'partial--recipes-preview' );
-        }
-    ?>
-
-
-
-
-
 <!-- SAME INGREDIENT -->
 <!-- ======================================================================= -->
 
@@ -455,6 +422,39 @@
 
             set_query_var( 'recipesToPreviewTitle', ucfirst($primaryIngredient)." recipes" );
             set_query_var( 'recipesToPreviewDescription', "Love ".$primaryIngredient."? ".$message );
+            set_query_var( 'recipesToPreview', $query->posts );
+            get_template_part( 'partial--recipes-preview' );
+        }
+    ?>
+
+
+
+
+    
+<!-- SIMILAR RECIPES -->
+<!-- ======================================================================= -->
+
+    <?php
+        $_recipesToPreview = [];
+        $args = array(
+            'post_type' => 'recipe',
+            'posts_per_page' => 4,
+            'post__not_in' => [$post->ID],
+            'orderby' => 'rand',
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'course',
+                    'field'    => 'name',
+                    'terms'    => $courses,
+                ),
+            ),
+        );
+        // The query
+        $query = new WP_Query( $args );
+
+        if ($query->found_posts > 0) {
+            set_query_var( 'recipesToPreviewTitle', "More ".$courses[0]."-dish recipes" );
+            set_query_var( 'recipesToPreviewDescription', null );
             set_query_var( 'recipesToPreview', $query->posts );
             get_template_part( 'partial--recipes-preview' );
         }
