@@ -66,32 +66,6 @@
 <!-- ======================================================================= -->
 
     <div class="row expanded">
-        <?php
-            // featured image
-            // $coverImage = get_post_thumbnail_id();
-
-            // $image_xxs  = wp_get_attachment_image_src( $coverImage, 'xxs' );
-            // $image_xs  = wp_get_attachment_image_src( $coverImage, 'xs' );
-            // $image_s  = wp_get_attachment_image_src( $coverImage, 's' );
-            // $image_m = wp_get_attachment_image_src( $coverImage, 'm' );
-            // $image_l  = wp_get_attachment_image_src( $coverImage, 'l' );
-            // $image_xl  = wp_get_attachment_image_src( $coverImage, 'xl' );
-            // $image_xxl  = wp_get_attachment_image_src( $coverImage, 'xxl' );
-
-            // $image_meta = wp_get_attachment_image($coverImage);
-        ?>
-        <!--<img class="cover-photo"
-            src="<?php echo esc_url( $image_m[0] ); ?>"
-            srcset="<?php echo esc_url( $image_xxl[0] ); ?> 3200w,
-                    <?php echo esc_url( $image_xl[0] ); ?> 2400w,
-                    <?php echo esc_url( $image_l[0] ); ?> 1600w,
-                    <?php echo esc_url( $image_m[0] ); ?> 1200w,
-                    <?php echo esc_url( $image_s[0] ); ?> 800w,
-                    <?php echo esc_url( $image_xs[0] ); ?> 400w,
-                    <?php echo esc_url( $image_xxs[0] ); ?> 200w"
-            sizes="100vw"
-            alt="<?php echo $image_meta['alt']; ?>"
-            title="<?php echo $image_meta['title']; ?>" />-->
         <?php echo(get_the_post_thumbnail($post->ID, 'post-thumbnail', array( 'class' => 'cover-photo' ))); ?>
     </div>
 
