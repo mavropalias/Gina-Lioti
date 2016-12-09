@@ -53,6 +53,11 @@
 </head>
 
 <body <?php body_class(); ?>>
+    <aside class="cooking-club-preview-mini hide-for-large">
+        <div class="row columns">
+            <?php echo do_shortcode('[mc4wp_form]'); ?>
+        </div>
+    </aside>
     <header class="expanded">
         <div class="row">
             <div class="columns inner">
@@ -60,60 +65,38 @@
                     <img class="app-logo" src="<?php echo get_template_directory_uri(); ?>/assets/img/gina_lioti_chef_logo.svg" alt="Gina Lioti Cooking" title="<?php echo esc_html( get_bloginfo( 'name' ) ); ?> – <?php bloginfo( 'description' ); ?>">
                 </a>
 
-                <nav class="show-for-large">
+                <label class="toggle-navigation-label hide-for-medium" for="show-navigation-input"><i class="ion-navicon"></i></label>
+
+                <input id="show-navigation-input" class="hide" type="checkbox">
+
+                <nav class="show-for-medium">
                     <ul>
-                        <li>
+                        <li class="show-for-large">
                             <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="icon ion-home <?php if(is_front_page()) echo('active'); ?>" title="Home"></a>
-                            
                         </li>
                         <li>
-                            
-                            <a href="/search" class="icon ion-search <?php if(is_page('search')) echo('active'); ?>" title="Search"></a>
+                            <a href="/search" class="icon ion-search <?php if(is_page('search')) echo('active'); ?>" title="Search">
+                                <span class="show-for-small-only">Search</span>
+                            </a>
                         </li>
                         <li>
-                            
                             <a href="/recipes" title="Recipes" class="<?php if(is_page('recipes')) echo('active'); ?>">Recipes</a>
                         </li>
-                        <li class="show-for-medium">
-                            
+                        <li>
                             <a href="/ingredients" title="Ingredients" class="<?php if(is_page('ingredients')) echo('active'); ?>">Ingredients</a>
                         </li>
                         <li>
-                                <a href="/hello" class="show-for-medium <?php if(is_page('hello')) echo('active'); ?>">Gina Lioti</a>
-                                <a href="/hello" class="show-for-small-only <?php if(is_page('hello')) echo('active'); ?>">Gina</a>
+                            <a href="/hello" class="<?php if(is_page('hello')) echo('active'); ?>">
+                                Gina <span class="show-for-large">Lioti</span>
+                            </a>
                         </li>
                     </ul>
                 </nav>
 
-                <a class="button" href="/cooking-club" class="<?php if(is_page('cooking-club')) echo('active'); ?>">COOKING CLUB</a>
+                <a class="button show-for-large" href="/cooking-club" class="<?php if(is_page('cooking-club')) echo('active'); ?>">COOKING CLUB</a>
             </div>
         </div>
     </header>
-
-    <nav class="hide-for-large">
-        <ul>
-            <li>
-                <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="icon ion-home <?php if(is_front_page()) echo('active'); ?>" title="Home"></a>
-                
-            </li>
-            <li>
-                
-                <a href="/search" class="icon ion-search <?php if(is_page('search')) echo('active'); ?>" title="Search"></a>
-            </li>
-            <li>
-                
-                <a href="/recipes" title="Recipes" class="<?php if(is_page('recipes')) echo('active'); ?>">Recipes</a>
-            </li>
-            <li class="show-for-medium">
-                <a href="/ingredients" class="<?php if(is_page('ingredients')) echo('active'); ?>">Ingredients</a>
-            </li>
-            <li>
-                <a href="/hello" class="show-for-medium <?php if(is_page('hello')) echo('active'); ?>">Gina Lioti</a>
-                <a href="/hello" class="show-for-small-only <?php if(is_page('hello')) echo('active'); ?>">Gina</a>
-            </li>
-        </ul>
-    </nav>
-
 
     <main>
 
