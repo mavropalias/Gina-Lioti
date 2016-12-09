@@ -357,8 +357,8 @@
 
     <?php
         if (count(bawmrp_get_related_posts($post->ID)) > 0) {
-            set_query_var( 'recipesToPreviewTitle', "Hand–picked complementary recipes" );
-            set_query_var( 'recipesToPreviewDescription', "These dishes go great with ".get_the_title()."." );
+            set_query_var( 'recipesToPreviewTitle', "Complementary recipes" );
+            set_query_var( 'recipesToPreviewDescription', "I hand–picked these dishes. They go great with ".get_the_title()."." );
             set_query_var( 'recipesToPreview', bawmrp_get_all_related_posts($post) );
             get_template_part( 'partial--recipes-preview' );
         }
@@ -405,7 +405,7 @@
 
 
     
-<!-- SIMILAR RECIPES -->
+<!-- SAME CATEGORY -->
 <!-- ======================================================================= -->
 
     <?php
@@ -427,8 +427,8 @@
         $query = new WP_Query( $args );
 
         if ($query->found_posts > 0) {
-            set_query_var( 'recipesToPreviewTitle', "More ".$courses[0]."-dish recipes" );
-            set_query_var( 'recipesToPreviewDescription', null );
+            set_query_var( 'recipesToPreviewTitle', ucfirst($courses[0])." recipes" );
+            set_query_var( 'recipesToPreviewDescription', "Discover more recipes, in this category." );
             set_query_var( 'recipesToPreview', $query->posts );
             get_template_part( 'partial--recipes-preview' );
         }
