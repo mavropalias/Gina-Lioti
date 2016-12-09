@@ -8,7 +8,7 @@
 
 <section class="section--mini section--with-separator"></section>
 
-<input id="showphotos" class="hide" type="checkbox">
+<input id="showphotos" class="hide" type="checkbox" checked>
 
 <section>
     <ol class="list-view">
