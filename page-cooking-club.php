@@ -1,7 +1,9 @@
 <?php get_header(); ?>
 
-<div class="column row">
-    <h1 class="title">Gina Lioti Cooking Club</h1>
-</div>
+<style>
+    body {
+        background-color: #110703;
+    }
+</style>
 
-<?php get_footer(); ?>
+<?php get_template_part( 'partial--cooking-club-preview' ); ?>
