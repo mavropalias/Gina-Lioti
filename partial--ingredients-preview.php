@@ -24,7 +24,7 @@
 <section>
     <div class="row column">
         <h2>Featured ingredients</h2>
-        <p>Discover recipes based on an ingredient</p>
+        <p>Discover recipes based on an ingredient.</p>
     </div>
 
     <ul class="ingredients-view">
