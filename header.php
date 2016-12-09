@@ -36,9 +36,6 @@
     <!-- ======================================================================= -->
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_uri(); ?>" />
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet">
 
     <!-- WP Head -->
     <!-- ======================================================================= -->

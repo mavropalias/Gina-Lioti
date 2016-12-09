@@ -180,7 +180,7 @@
 
     <section class="recommended-item expanded">
         <div class="row">
-            <div class="shrink columns">
+            <div class="small-12 shrink columns">
                 <img class="thumb" src="<?php echo get_template_directory_uri(); ?>/assets/img/gina_lioti_advice.jpg">
             </div>
             <div class="columns">
