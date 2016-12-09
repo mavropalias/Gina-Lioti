@@ -11,7 +11,7 @@
 <input id="showphotos" class="hide" type="checkbox">
 
 <section>
-    <ol class="no-bullet">
+    <ol class="list-view">
         <?php
             $args = array(
                 'post_type' => 'recipe',
@@ -27,23 +27,28 @@
 
                     <?php $do_not_duplicate[] = $post->ID; ?>
 
-                    <li>
+                    <li class="list-item has-indicator">
                         <a class="recipe-preview recipe-preview--large"
                             href="<?php the_permalink(); ?>"
                             title="<?php the_title_attribute(); ?>">
                             <?php echo(get_the_post_thumbnail($post->ID, 'post-thumbnail')); ?>
                             <span class="recipe-title"><?php the_title(); ?></span>
-                            <span class="recipe-subtitle"><?php
+
+                            <?php 
                                 // TAGS (Terms) 
-                                // the_terms( $post->ID, 'post_tag', '', ', ' );
                                 $terms = get_the_terms($post->ID, 'post_tag');
-                                $index = 0;
-                                foreach ( $terms as $term ) {
-                                    if ($index > 0) echo ', ';
-                                    echo $term->name;
-                                    $index++;
-                                } 
-                            ?></span>
+
+                                if (! empty( $terms )) {
+                            ?>
+                                    <span class="recipe-subtitle"><?php
+                                        $index = 0;
+                                        foreach ( $terms as $term ) {
+                                            if ($index > 0) echo ', ';
+                                            echo $term->name;
+                                            $index++;
+                                        } 
+                                    ?></span>
+                            <?php } ?>
                         </a>
                     </li>
 
