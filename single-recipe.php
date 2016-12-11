@@ -231,7 +231,7 @@
         ?>
             <?php if ($ingredientGroup != "") { ?>
                 <div class="row column">
-                    <h3><?php echo $ingredientGroup; ?>:</h3>
+                    <h3 class="subheader"><?php echo $ingredientGroup; ?> ingredients:</h3>
                 </div>
             <?php } ?>
             <ul class="ingredients-view">
@@ -296,7 +296,7 @@
             <?php
                 foreach( $directionGroups as $directionGroup ) {
             ?>
-                <?php if ($directionGroup != "") { ?><h3><?php echo $directionGroup; ?></h3><?php } ?>
+                <?php if ($directionGroup != "") { ?><h3 class="subheader"><?php echo $directionGroup; ?> instructions:</h3><?php } ?>
                 <ol class="recipe-instructions">
                 <?php
                     foreach( $directions as $direction ) {
@@ -356,7 +356,7 @@
 <!-- ======================================================================= -->
 
     <?php
-        if (count(bawmrp_get_related_posts($post->ID)) > 0) {
+        if (count(bawmrp_get_all_related_posts($post)) > 0) {
             set_query_var( 'recipesToPreviewTitle', "Complementary recipes" );
             set_query_var( 'recipesToPreviewDescription', "I hand–picked these dishes. They go great with ".get_the_title()."." );
             set_query_var( 'recipesToPreview', bawmrp_get_all_related_posts($post) );
