@@ -49,4 +49,7 @@
             </li>
         <?php } ?>
     </ul>
+    <?php if (!is_page(['ingredients'])) { ?>
+        <a class="button secondary button--view-more" href="/ingredients">More ingredients</a>
+    <?php } ?>
 </section>

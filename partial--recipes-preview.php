@@ -2,7 +2,8 @@
 <section>
     <div class="row column">
         <?php if(is_front_page()) { ?>
-            <a href="/recipes"><h2>My recipes</h2></a>
+            <h2>My recipes</h2>
+            <p>I use artisanal Irish ingredients to create deliciously healthy, gourmet, dishes.</p>
         <?php } else { ?>
             <h2><?php if (!empty($recipesToPreviewTitle)) echo $recipesToPreviewTitle; else echo "My Recipes"; ?></h2>
             <?php if (!empty($recipesToPreviewDescription)) {
@@ -184,4 +185,8 @@
         }
     ?>
     </div>
+
+    <?php if(is_front_page()) { ?>
+        <a class="button secondary button--view-more" href="/recipes">More recipes</a>
+    <?php } ?>
 </section>

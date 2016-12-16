@@ -6,7 +6,7 @@
             <div class="columns  align-center align-middle cooking-club-copy">
                 <h3>Join my Cooking Club</h3>
                 <p class="lead">
-                    “I want to show you the absolute best of Greek cuisine. Learn to cook delicious, healthy and easy dishes. Exclusive to members.”
+                    &ldquo;I want to show you the absolute best of Greek cuisine. Learn to cook delicious, healthy and easy dishes. Exclusive to members.&rdquo;
                 </p>
                 <?php echo do_shortcode('[mc4wp_form]'); ?>
                 <small>Test it out; it only takes a single click to unsubscribe</small>

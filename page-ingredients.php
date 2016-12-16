@@ -40,7 +40,7 @@
                 <img class="thumb" src="<?php echo get_template_directory_uri(); ?>/assets/img/gina_lioti_advice.jpg">
             </div>
             <div class="columns">
-                <p class="lead">"I want to make you appreciate the seasonality, locality, variability and quality of cooking ingredients."</p>
+                <p class="lead">&ldquo;I want to make you appreciate the seasonality, locality, variability and quality of cooking ingredients.&rdquo;</p>
                 <cite>Gina Lioti</cite><br>
             </div>
         </div>
