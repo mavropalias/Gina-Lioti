@@ -79,7 +79,7 @@
     <section class="section--mini">
         <?php
             // Count how many grid items will be displayed
-            $gridCount = 0;
+            $gridCount = wp_count_terms('post_tag');
             if (!empty($meta['recipe_servings']) && $meta['recipe_servings'][0]) $gridCount++;
             if (!empty($meta['recipe_prep_time']) && $meta['recipe_prep_time'][0]) $gridCount++;
             if (!empty($meta['recipe_cook_time']) && $meta['recipe_cook_time'][0]) $gridCount++;
@@ -135,6 +135,8 @@
                     "</div>";
                 }
             ?>
+
+            <?php the_terms( $post->ID, 'post_tag', '<div class="column">', '</div><div class="column">', '</div>' ); ?>
 
             <?php
                 $totalTimeMinutes = 0;
