@@ -79,11 +79,14 @@
     <section class="section--mini">
         <?php
             // Count how many grid items will be displayed
-            $gridCount = wp_count_terms('post_tag');
+            $gridCount = count(wp_get_post_terms($post->ID, 'post_tag'));
+            
             if (!empty($meta['recipe_servings']) && $meta['recipe_servings'][0]) $gridCount++;
             if (!empty($meta['recipe_prep_time']) && $meta['recipe_prep_time'][0]) $gridCount++;
             if (!empty($meta['recipe_cook_time']) && $meta['recipe_cook_time'][0]) $gridCount++;
             if (!empty($meta['recipe_passive_time']) && $meta['recipe_passive_time'][0]) $gridCount++;
+
+            if ($gridCount > 4) $gridCount = 4;
         ?>
         <div class="row small-up-2 medium-up-<?php echo $gridCount; ?> meta-grid">
             <?php
