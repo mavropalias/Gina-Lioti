@@ -5,10 +5,27 @@
             <h2>My recipes</h2>
             <p>I use artisanal Irish ingredients to create deliciously healthy, gourmet, dishes.</p>
         <?php } else { ?>
-            <h2><?php if (!empty($recipesToPreviewTitle)) echo $recipesToPreviewTitle; else echo "My Recipes"; ?></h2>
-            <?php if (!empty($recipesToPreviewDescription)) {
-                echo "<p>".$recipesToPreviewDescription."</p>";
-            } 
+            <?php if (is_tag() || is_tax() && !is_tax("ingredient")) { ?>
+                <div class="column row">
+                    <h1 class="title"><?php if (!empty($recipesToPreviewTitle)) echo $recipesToPreviewTitle; ?></h1>
+                </div>
+                <section class="recommended-item expanded">
+                    <div class="row">
+                        <div class="shrink columns">
+                            <img class="thumb" src="<?php echo get_template_directory_uri(); ?>/assets/img/gina_lioti_advice.jpg">
+                        </div>
+                        <div class="columns">
+                            <p class="lead">&ldquo;<?php if (!empty($recipesToPreviewDescription)) echo $recipesToPreviewDescription." "; ?>I have prepared <?php echo $wp_query->found_posts; ?> <?php echo strtolower($recipesToPreviewTitle); ?>.&rdquo;</p>
+                            <cite>Gina Lioti</cite><br>
+                        </div>
+                    </div>
+                </section>
+            <?php } else { ?>
+                <h2><?php if (!empty($recipesToPreviewTitle)) echo $recipesToPreviewTitle; else echo "My Recipes"; ?></h2>
+                <?php if (!empty($recipesToPreviewDescription)) {
+                    echo "<p>".$recipesToPreviewDescription."</p>";
+                } 
+            }
         } ?>
     </div>
 

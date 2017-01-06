@@ -28,11 +28,11 @@
         <div class="row column">
             <small>Suggestions:</small>
             <ul class="no-bullet">
-                <li><a class="lead" href="">Mains</a></li>
-                <li><a class="lead" href="">Sides</a></li>
-                <li><a class="lead" href="">Desserts</a></li>
-                <li><a class="lead" href="/?s=vegetarian&tag=vegetarian">Vegetarian recipes</a></li>
-                <li><a class="lead" href="/?s=gluten free&tag=gluten-free">Gluten free recipes</a></li>
+                <li><a class="lead" href="/course/main">Mains</a></li>
+                <li><a class="lead" href="/course/savoury">Savouries</a></li>
+                <li><a class="lead" href="/course/sweet">Sweets</a></li>
+                <li><a class="lead" href="/tag/vegetarian">Vegetarian recipes</a></li>
+                <li><a class="lead" href="/tag/gluten-free">Gluten free recipes</a></li>
             </ul>
         </div>
 
