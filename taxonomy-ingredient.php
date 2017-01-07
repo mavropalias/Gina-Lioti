@@ -60,7 +60,7 @@
             title="<?php echo $image_meta['title']; ?>" />-->
             <?php 
             if (function_exists('z_taxonomy_image')) {
-                echo(z_taxonomy_image(get_cat_ID(), 'post-thumbnail', array( 'class' => 'cover-photo' ))); 
+                echo(z_taxonomy_image(get_cat_ID(''), 'post-thumbnail', array( 'class' => 'cover-photo' ))); 
             }?>
     </div>
     
