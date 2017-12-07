@@ -3,7 +3,7 @@
     <div class="row column">
         <?php if(is_front_page()) { ?>
             <h2>My recipes</h2>
-            <p>I use artisanal Irish ingredients to create deliciously healthy, gourmet, dishes.</p>
+            <p>I use artisanal Irish ingredients to create deliciousl, healthy, gourmet, dishes.</p>
         <?php } else { ?>
             <?php if (is_tag() || is_tax() && !is_tax("ingredient")) { ?>
                 <div class="column row">
@@ -27,7 +27,7 @@
                 <h2><?php if (!empty($recipesToPreviewTitle)) echo $recipesToPreviewTitle; else echo "My Recipes"; ?></h2>
                 <?php if (!empty($recipesToPreviewDescription)) {
                     echo "<p>".$recipesToPreviewDescription."</p>";
-                } 
+                }
             }
         } ?>
     </div>
@@ -38,7 +38,7 @@
         if(is_front_page()) {
 
             $do_not_duplicate = array();
-            
+
             // ----------------------------------------------------------------
             // FEATURED RECIPES
             // ----------------------------------------------------------------
@@ -62,7 +62,7 @@
                             <?php echo(get_the_post_thumbnail($post->ID, 'post-thumbnail')); ?>
                             <span class="recipe-title"><?php the_title(); ?></span>
                             <span class="recipe-subtitle"><?php
-                                // TAGS (Terms) 
+                                // TAGS (Terms)
                                 // the_terms( $post->ID, 'post_tag', '', ', ' );
                                 $terms = get_the_terms($post->ID, 'post_tag');
                                 $index = 0;
@@ -70,12 +70,12 @@
                                     if ($index > 0) echo ', ';
                                     echo $term->name;
                                     $index++;
-                                } 
+                                }
                             ?></span>
                         </a>
 
                     <?php endwhile; ?>
-                
+
             <?php }
                 /* Restore original Post Data */
                 wp_reset_postdata();
@@ -108,7 +108,7 @@
                             <?php echo(get_the_post_thumbnail($post->ID, 'post-thumbnail')); ?>
                             <span class="recipe-title"><?php the_title(); ?></span>
                             <span class="recipe-subtitle"><?php
-                                // TAGS (Terms) 
+                                // TAGS (Terms)
                                 // the_terms( $post->ID, 'post_tag', '', ', ' );
                                 $terms = get_the_terms($post->ID, 'post_tag');
                                 $index = 0;
@@ -116,12 +116,12 @@
                                     if ($index > 0) echo ', ';
                                     echo $term->name;
                                     $index++;
-                                } 
+                                }
                             ?></span>
                         </a>
 
                 <?php endwhile; ?>
-                
+
             <?php }
                 /* Restore original Post Data */
                 wp_reset_postdata();
@@ -154,7 +154,7 @@
                             <?php echo(get_the_post_thumbnail($post->ID, 'post-thumbnail')); ?>
                             <span class="recipe-title"><?php the_title(); ?></span>
                             <span class="recipe-subtitle">New recipe<?php
-                                // TAGS (Terms) 
+                                // TAGS (Terms)
                                 // the_terms( $post->ID, 'post_tag', '', ', ' );
                                 $terms = get_the_terms($post->ID, 'post_tag');
                                 $index = 0;
@@ -164,13 +164,13 @@
                                         if ($index > 0) echo ', ';
                                         echo $term->name;
                                         $index++;
-                                    } 
+                                    }
                                 }
                             ?></span>
                         </a>
 
                 <?php endwhile; ?>
-                
+
             <?php }
                 /* Restore original Post Data */
                 wp_reset_postdata();
@@ -183,11 +183,11 @@
                 <a class="column recipe-preview"
                     href="<?php echo get_permalink($recipe->ID); ?>"
                     title="<?php echo $recipe->post_title; ?>">
-                    
+
                     <?php echo(get_the_post_thumbnail($recipe->ID, 'post-thumbnail')); ?>
                     <span class="recipe-title"><?php echo $recipe->post_title; ?></span>
                     <span class="recipe-subtitle">
-                    <?php 
+                    <?php
                         $terms = get_the_terms($recipe->ID, 'post_tag');
                         $index = 0;
                         if ( $terms && ! is_wp_error( $terms ) ) {
@@ -195,7 +195,7 @@
                                 if ($index > 0) echo ', ';
                                 echo $term->name;
                                 $index++;
-                            } 
+                            }
                         }
                     ?>
                     </span>

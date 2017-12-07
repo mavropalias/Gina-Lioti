@@ -1,2 +1,2 @@
-"use strict";$(document).foundation();
+"use strict";
 //# sourceMappingURL=./app-min.js.map

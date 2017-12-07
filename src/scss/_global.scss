@@ -1,0 +1,42 @@
+body {
+    counter-reset: item;
+
+    // Typography
+    font-kerning: normal;
+    font-variant-ligatures: common-ligatures contextual;
+    font-variant-numeric: lining-nums tabular-nums;
+    font-feature-settings: "kern", "liga", "clig", "calt", "lnum", "tnum";
+
+    & > main {
+        @include breakpoint(large up) {
+            margin-top: $global-margin * 2;
+        }
+
+        & > * {
+            margin: 0 auto;
+
+            &:not(.expanded) { max-width: $global-width; }
+            &.expanded { max-width: $max-width; }
+        }
+
+        & > section {
+            margin-bottom: $section-margin-bottom;
+
+            &.section--mini { margin-bottom: $section-margin-bottom/2; }
+            &.section--with-separator { border-bottom: 1px solid $medium-gray; }
+        }
+    }
+}
+
+button,
+.button {
+    font-weight: 700;
+}
+
+.expanded {
+    justify-content: center;
+}
+
+.input-group-field {
+    width: 100%;
+}

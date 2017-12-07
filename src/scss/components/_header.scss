@@ -1,0 +1,43 @@
+header {
+    width: 100vw;
+    max-width: initial;
+    background-color: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: $global-padding;
+    z-index: 999;
+
+    @include breakpoint(large up) {
+        min-height: $global-margin * 5;
+        line-height: $global-margin * 5;
+    }
+
+    .inner {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        width: $global-width;
+        max-width: 100vw;
+
+        .app-logo {
+            width: rem-calc(213);
+            max-width: 80vw;
+
+            @include breakpoint(large up) {
+                padding-right: $global-padding;
+            }
+        }
+    }
+
+    .toggle-navigation-label {
+        font-size: rem-calc(44);
+        cursor: pointer;
+        line-height: 1;
+    }
+
+    #show-navigation-input:checked + nav  {
+        display: block !important;
+    }
+}

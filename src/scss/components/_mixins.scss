@@ -1,0 +1,381 @@
+// =============================================================================
+// HELPER CLASSES
+// =============================================================================
+
+    .tip {
+        font-size: rem-calc(22);
+        font-family: serif;
+    }
+
+    .thumb {
+        width: rem-calc(83);
+        height: rem-calc(83);
+        border-radius: 1000px;
+
+        // @media #{$small-only} {
+        //     width: 50%;
+        //     height: auto;
+        //     margin: 0 auto;
+        //     display: block;
+        // }
+    }
+
+    .medium { font-weight: 500; }
+
+    .title {
+        // font-size: rem-calc(60);
+        font-weight: 900;
+        margin-top: $global-margin * 2;
+
+        @include breakpoint(medium up) {
+            margin-top: $global-margin * 3;
+        }
+    }
+
+    .cover-photo {
+        max-height: calc(100vh - 8rem);
+        width: auto;
+        margin: 0 auto;
+    }
+
+    .button--view-more {
+        &:after {
+            content: "\f125";
+            font-family: "Ionicons";
+            font-size: rem-calc(18);
+            padding-left: map-get($grid-column-gutter, small)/2;
+        }
+    }
+
+
+
+
+
+// =============================================================================
+// HEADERS
+// =============================================================================
+
+    a {
+        display: block;
+        position: relative;
+
+        h1, h2, h3 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-right: $global-padding;
+
+             &:after {
+                font-family: "Ionicons";
+                font-size: rem-calc(18);
+                content: "\f125";
+                color: $dark-gray;
+            }
+        }
+    }
+
+
+
+
+
+// =============================================================================
+// META-GRID
+// =============================================================================
+
+    .meta-grid {
+        div {
+            border-bottom: 1px solid $medium-gray;
+            padding-top: rem-calc(10);
+            padding-bottom: rem-calc(10);
+        }
+    }
+
+
+
+
+
+// =============================================================================
+// LOVE-THIS
+// =============================================================================
+
+    .love-this {
+        text-align: center;
+
+        i {
+            display: block;
+            font-size: rem-calc(140);
+            line-height: 1;
+        }
+    }
+
+
+
+
+
+// =============================================================================
+// RECOMMENDED ITEM
+// =============================================================================
+
+    .recommended-item {
+        p, h2 {
+            margin: 0;
+            padding-right: 0;
+
+            &:after { content: ''; }
+        }
+
+        .cover-photo {
+            margin-top: $global-margin;
+        }
+    }
+
+
+
+
+
+// =============================================================================
+// INGREDIENTS VIEW
+// =============================================================================
+
+    .ingredients-view {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+
+        .ingredient {
+            width: 100%;
+
+            @include breakpoint(medium up) {
+                width: 50%;
+                min-height: $global-margin * 6.5;
+            }
+
+            &:nth-child(even) {
+                .ingredient-inner {
+                    padding-left: $global-margin * 5 + ($global-margin*2)+($global-margin/2) + $global-margin / 2;
+
+                    .ingredient-thumb {
+                        margin: -$global-margin*2 0 0 ($global-margin*2)+($global-margin/2);
+                    }
+                }
+            }
+
+            &:hover {
+                .ingredient-name {
+                    text-decoration: underline;
+                }
+            }
+
+            .ingredient-inner {
+                display: flex;
+                position: relative;
+                justify-content: flex-start;
+                height: $global-margin*5;
+                padding-left: $global-margin*5 + $global-margin / 2;
+
+                .ingredient-thumb {
+                    overflow: hidden;
+                    position: absolute;
+                    left: 0;
+                    visibility: hidden;
+                    transform: rotate(120deg);
+                    width: $global-margin * 5;
+                    height: $global-margin * 10;
+                    margin: -$global-margin * 2 0 0 0;
+
+                    .hexagon-1 {
+                        overflow: hidden;
+                        width: 100%;
+                        height: 100%;
+                        transform: rotate(-60deg);
+
+                        .hexagon-2 {
+                            width: 100%;
+                            height: 100%;
+                            background-repeat: no-repeat;
+                            background-position: 50%;
+                            background-size: cover;
+                            visibility: visible;
+                            transform: rotate(-60deg);
+                            background-color: #ddd;
+                        }
+                    }
+                }
+
+                .ingredient-details {
+                    display: flex;
+                    align-content: flex-start;
+                    justify-content: center;
+                    flex-direction: column;
+                    margin-top: $global-margin;
+
+                    .ingredient-name {
+                        line-height: 1;
+                        margin-bottom: $global-margin / 8;
+
+                        &::first-letter {
+                            text-transform: capitalize;
+                        }
+                    }
+
+                    .ingredient-meta {
+                        line-height: 1;
+                        color: $dark-gray;
+
+                        .ingredient-notes {
+                            &::first-letter {
+                                text-transform: capitalize;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+
+
+
+// =============================================================================
+// RECIPE PREVIEW
+// =============================================================================
+
+    .recipe-preview {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: $global-margin * 2;
+        padding: 0 1px;
+
+        .recipe-image {
+            height: rem-calc(150);
+        }
+
+        .recipe-title {
+            margin-top: $global-padding/2;
+            margin-bottom: $global-padding/8;
+            line-height: 1;
+            padding: 0 $global-padding;
+            display: inline-block;
+            font-weight: 400;
+        }
+
+        .recipe-subtitle {
+            padding: 0 $global-padding;
+            color: $dark-gray;
+            font-size: rem-calc(14);
+            line-height: rem-calc(14);
+        }
+    }
+
+    .recipe-preview--large {
+        margin-bottom: $global-margin * 4;
+    }
+
+
+
+
+
+// =============================================================================
+// RECIPE INSTRUCTIONS
+// =============================================================================
+
+    .recipe-instructions {
+        list-style: none;
+        margin: 0;
+
+        li {
+            counter-increment: item;
+            display: flex;
+            align-items: baseline;
+            border-bottom: 1px solid $light-gray;
+            padding: $global-padding 0;
+            margin-left: -$global-margin / 2;
+            margin-right: -$global-margin / 2;
+
+            @include breakpoint(medium up) {
+                margin-left: -$global-margin;
+                margin-right: -$global-margin;
+            }
+
+            @include breakpoint(large up) {
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            &:before {
+                font-size: rem-calc(24);
+                font-weight: 700;
+                content: counter(item);
+                width: $global-margin * 2;
+                margin-left: $global-margin/2;
+                flex-shrink: 0;
+
+                @include breakpoint(medium up) {
+                    margin-left: $global-margin;
+                }
+
+                @include breakpoint(large up) {
+                    margin-left: 0;
+                }
+            }
+
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+    }
+
+
+
+
+
+// =============================================================================
+// LIST VIEW
+// =============================================================================
+
+    .list-view {
+        list-style: none;
+        margin: 0;
+
+        .list-item {
+            position: relative;
+            border-bottom: 1px solid $light-gray;
+            padding: $global-padding/2 map-get($grid-column-gutter, small);
+
+            &.has-indicator a:after {
+                font-family: "Ionicons";
+                content: "\f125";
+                position: absolute;
+                top: 0;
+                right: $global-padding;
+                color: $dark-gray;
+            }
+
+            &:last-child {
+                border-bottom: none;
+            }
+
+            a {
+                display: block;
+                padding-right: 2.5rem;
+            }
+        }
+    }
+
+
+
+
+
+// =============================================================================
+// TOGGLE PHOTOS
+// =============================================================================
+
+    #showphotos:checked + section a  {
+        display: block;
+        margin-bottom: 0;
+    }
+
+    #showphotos:checked + section a .recipe-title  { padding: 0; }
+    #showphotos:checked + section a .recipe-subtitle  { padding-left: 1em; }
+    #showphotos:checked + section img  { display: none; }
