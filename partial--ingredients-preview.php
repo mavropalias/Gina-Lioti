@@ -1,21 +1,15 @@
 <?php
     $max_ingredients = 6;
-    $args = array(
-        'taxonomy' => 'ingredient',
-        'hide_empty' => true
-    );
 
-    // Get all ingredients
-    $ingredients_raw = get_terms( $args );
+    // Get ingredients with images
+    $ingredients_with_photos = apply_filters( 'taxonomy-images-get-terms', '', array(
+        'taxonomy' => 'ingredient'
+    ) );
 
-    // Keep only ingredients with photos
-    $ingredients_with_photos = [];
-    foreach( $ingredients_raw as $ingredient ) {
-        if (strlen(z_taxonomy_image_url($ingredient->term_id)) > 0) $ingredients_with_photos[] = $ingredient; 
-    }
-
+    // Shuffle ingredient list every time
     shuffle($ingredients_with_photos);
 
+    // Limit the number of ingredients to be displayed
     $ingredients = array_slice($ingredients_with_photos, 0, $max_ingredients);
 
 ?>
@@ -30,15 +24,12 @@
     <ul class="ingredients-view">
         <?php foreach( $ingredients as $ingredient ) { ?>
             <li class="ingredient">
-                <a class="ingredient-inner" 
+                <a class="ingredient-inner"
                     title="<?php echo ucfirst($ingredient->name); ?> recipes"
                     href="<?php echo get_category_link($ingredient->term_id); ?>">
                     <div class="ingredient-thumb">
                         <div class="hexagon-1">
-                            <div class="hexagon-2" title="<?php echo ucfirst($ingredient->name); ?>" style="background-image: url(<?php 
-                                if (function_exists('z_taxonomy_image_url')) {
-                                    echo(z_taxonomy_image_url($ingredient->term_id, 'ingredient-thumb' )); 
-                                }?>);"></div>
+                            <div class="hexagon-2" title="<?php echo ucfirst($ingredient->name); ?>" style="background-image: url(<?php echo wp_get_attachment_image_url($ingredient->image_id, 'ingredient-thumb'); ?>); background-image: -webkit-image-set(url(<?php echo wp_get_attachment_image_url($ingredient->image_id, 'ingredient-thumb'); ?>) 1x, url(<?php echo wp_get_attachment_image_url($ingredient->image_id, 'ingredient-thumb-2x'); ?>) 2x, url(<?php echo wp_get_attachment_image_url($ingredient->image_id, 'ingredient-thumb-3x'); ?>) 3x);"></div>
                         </div>
                     </div>
                     <div class="ingredient-details">
@@ -50,6 +41,8 @@
         <?php } ?>
     </ul>
     <?php if (!is_page(['ingredients'])) { ?>
-        <a class="button secondary button--view-more" href="/ingredients">More ingredients</a>
+        <div class="row columns">
+            <a class="button secondary button--view-more" href="/ingredients">More ingredients</a>
+        </div>
     <?php } ?>
 </section>

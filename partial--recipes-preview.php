@@ -3,7 +3,15 @@
     <div class="row column">
         <?php if(is_front_page()) { ?>
             <h2>My recipes</h2>
-            <p>I use artisanal Irish ingredients to create deliciousl, healthy, gourmet, dishes.</p>
+            <p>I use artisanal Irish ingredients to create delicious, healthy, gourmet, dishes.</p>
+            <p>
+                <a class="button secondary button--view-more" href="/course/main">Mains</a>
+                <a class="button secondary button--view-more" href="/course/savoury">Savouries</a>
+                <a class="button secondary button--view-more" href="/course/sweet">Sweets</a>
+                <a class="button secondary button--view-more" href="/tag/vegetarian">Vegetarian</a>
+                <a class="button secondary button--view-more" href="/tag/gluten-free">Gluten&ndash;free</a>
+                <a class="button secondary button--view-more" href="/tag/basics">Basics</a>
+            </p>
         <?php } else { ?>
             <?php if (is_tag() || is_tax() && !is_tax("ingredient")) { ?>
                 <div class="column row">
@@ -207,6 +215,8 @@
     </div>
 
     <?php if(is_front_page()) { ?>
-        <a class="button secondary button--view-more" href="/recipes">More recipes</a>
+        <div class="row columns">
+            <a class="button secondary button--view-more" href="/recipes">More recipes</a>
+        </div>
     <?php } ?>
 </section>

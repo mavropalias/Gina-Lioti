@@ -41,30 +41,18 @@
 
     <div class="row expanded">
         <?php
-            // featured image
-            // $coverImage = get_post_thumbnail_id();
-
-            // $image_xxs  = wp_get_attachment_image_src( $coverImage, 'xxs' );
-            // $image_xs  = wp_get_attachment_image_src( $coverImage, 'xs' );
-            // $image_s  = wp_get_attachment_image_src( $coverImage, 's' );
-            // $image_m = wp_get_attachment_image_src( $coverImage, 'm' );
-            // $image_l  = wp_get_attachment_image_src( $coverImage, 'l' );
-            // $image_xl  = wp_get_attachment_image_src( $coverImage, 'xl' );
-            // $image_xxl  = wp_get_attachment_image_src( $coverImage, 'xxl' );
-
-            // $image_meta = wp_get_attachment_image($coverImage);
-        ?>
-        <!--<img class="cover-photo"
-            src="<?php if (function_exists('z_taxonomy_image_url')) echo z_taxonomy_image_url(); ?>"
-            alt="<?php echo $image_meta['alt']; ?>"
-            title="<?php echo $image_meta['title']; ?>" />-->
-            <?php 
-            if (function_exists('z_taxonomy_image')) {
-                echo(z_taxonomy_image(get_cat_ID(''), 'post-thumbnail', array( 'class' => 'cover-photo' ))); 
-            }?>
+            print apply_filters( 'taxonomy-images-queried-term-image', '', array(
+                'attr'       => array(
+                    'alt'   => ucfirst(single_term_title("", false)),
+                    'class' => 'cover-photo',
+                    'title' => ucfirst(single_term_title("", false)),
+                    ),
+                'image_size' => 'post-thumbnail'
+            ) );
+            ?>
     </div>
-    
-    
+
+
 
 
 

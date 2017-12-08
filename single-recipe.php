@@ -80,7 +80,7 @@
         <?php
             // Count how many grid items will be displayed
             $gridCount = count(wp_get_post_terms($post->ID, 'post_tag'));
-            
+
             if (!empty($meta['recipe_servings']) && $meta['recipe_servings'][0]) $gridCount++;
             if (!empty($meta['recipe_prep_time']) && $meta['recipe_prep_time'][0]) $gridCount++;
             if (!empty($meta['recipe_cook_time']) && $meta['recipe_cook_time'][0]) $gridCount++;
@@ -243,7 +243,9 @@
                 <?php
                     foreach( $ingredients as $ingredient ) {
                         if ($ingredient['group'] == $ingredientGroup) {
-                            // initialize $primaryIngredient, if empty
+                            // Initialize $primaryIngredient, if empty. We'll
+                            // use it later to display recipes with the same
+                            // primary ingredient.
                             if (strlen($primaryIngredient) == 0) $primaryIngredient = $ingredient['ingredient'];
 
                             $ingredientTerm = get_term( $ingredient['ingredient_id'], "ingredient" );
@@ -259,7 +261,7 @@
                             <a class="ingredient-inner" href="<?php echo get_term_link( $ingredient['ingredient_id'], 'ingredient' ); ?>">
                                 <div class="ingredient-thumb">
                                     <div class="hexagon-1">
-                                        <div class="hexagon-2" style="background-image: url(<?php echo content_url(); ?>/uploads/<?php echo $ingredientTerm->slug; ?>-600x315.jpg);"></div>
+                                        <div class="hexagon-2" style="background-image: url(<?php echo content_url(); ?>/uploads/<?php echo $ingredientTerm->slug; ?>-300x348.jpg);"></div>
                                     </div>
                                 </div>
                                 <div class="ingredient-details" itemprop="ingredients">
@@ -363,7 +365,7 @@
     <?php
         if (count(bawmrp_get_all_related_posts($post)) > 0) {
             set_query_var( 'recipesToPreviewTitle', "Complementary recipes" );
-            set_query_var( 'recipesToPreviewDescription', "I hand–picked these dishes. They go great with ".get_the_title()."." );
+            set_query_var( 'recipesToPreviewDescription', "With every new recipe, I hand&ndash;pick dishes that complement it well. You can enjoy ".get_the_title()." with any of the following." );
             set_query_var( 'recipesToPreview', bawmrp_get_all_related_posts($post) );
             get_template_part( 'partial--recipes-preview' );
         }
@@ -397,7 +399,7 @@
 
         if ($query->found_posts > 0) {
             $message = "Here's one more recipe with ".$primaryIngredient." as an ingredient.";
-            if( $query->found_posts > 1 ) $message = "Here are ".$query->post_count." more recipes with ".$primaryIngredient." as an ingredient."; 
+            if( $query->found_posts > 1 ) $message = "Here are ".$query->post_count." more recipes with ".$primaryIngredient." as an ingredient.";
 
             set_query_var( 'recipesToPreviewTitle', ucfirst($primaryIngredient)." recipes" );
             set_query_var( 'recipesToPreviewDescription', "Love ".$primaryIngredient."? ".$message );
@@ -409,7 +411,7 @@
 
 
 
-    
+
 <!-- SAME CATEGORY -->
 <!-- ======================================================================= -->
 
@@ -433,7 +435,7 @@
 
         if ($query->found_posts > 0) {
             set_query_var( 'recipesToPreviewTitle', ucfirst($courses[0])." recipes" );
-            set_query_var( 'recipesToPreviewDescription', "Discover more recipes, in this category." );
+            set_query_var( 'recipesToPreviewDescription', "Discover more recipes in this category." );
             set_query_var( 'recipesToPreview', $query->posts );
             get_template_part( 'partial--recipes-preview' );
         }

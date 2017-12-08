@@ -32,7 +32,7 @@
                 <li><a class="lead" href="/course/savoury">Savouries</a></li>
                 <li><a class="lead" href="/course/sweet">Sweets</a></li>
                 <li><a class="lead" href="/tag/vegetarian">Vegetarian recipes</a></li>
-                <li><a class="lead" href="/tag/gluten-free">Gluten free recipes</a></li>
+                <li><a class="lead" href="/tag/gluten-free">Gluten&ndash;free recipes</a></li>
             </ul>
         </div>
 
