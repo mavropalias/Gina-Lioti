@@ -19,7 +19,10 @@ $content = prepend_attachment($content);
         <?php echo $content; ?>
     </div>
     <div class="small-12 medium-4 columns">
-        <?php echo do_shortcode( '[contact-form-7 id="442" title="Contact Gina Lioti"]' ); ?>
+        <?php echo(get_the_post_thumbnail($post->ID, 'post-thumbnail', array( 'class' => '' ))); ?>
+        <div class="margin-top-1">
+            <?php echo do_shortcode( '[contact-form-7 id="442" title="Contact Gina Lioti"]' ); ?>
+        </div>
     </div>
 </div>
 

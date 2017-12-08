@@ -7,7 +7,7 @@
     </p>
     <div class="row columns">
         <p class="lead">&ldquo;I want to show you the absolute best of Greek cuisine. My recipes are delicious, simple and easy. &rdquo;<p>
-        <a class="button secondary button--view-more" href="/hello">Hello</a>
+        <a class="button secondary button--view-more margin-0" href="/hello">Hello</a>
     </div>
 </section>
 

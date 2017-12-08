@@ -87,13 +87,13 @@
                         </li>
                         <li>
                             <a href="/hello" class="<?php if(is_page('hello')) echo('active'); ?>">
-                                Gina <span class="show-for-large">Lioti</span>
+                                Hello</span>
                             </a>
                         </li>
                     </ul>
                 </nav>
 
-                <a class="button show-for-large" href="/cooking-club" class="<?php if(is_page('cooking-club')) echo('active'); ?>">COOKING CLUB</a>
+                <a class="button show-for-large margin-0" href="/cooking-club" class="<?php if(is_page('cooking-club')) echo('active'); ?>">COOKING CLUB</a>
             </div>
         </div>
     </header>

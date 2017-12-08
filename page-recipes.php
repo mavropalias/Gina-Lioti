@@ -15,8 +15,11 @@
 <!-- ======================================================================= -->
 
     <section class="section--mini section--with-separator">
+        <div class="row column">
+            <?php get_template_part( 'partial--site-links' ); ?>
+        </div>
         <ul class="list-view">
-            <li class="list-item has-indicator"><a href="recipes-a-to-z">See A&ndash;to&ndash;Z list of all my recipes</a></li>
+            <li class="list-item has-indicator"><a href="recipes-a-to-z">See the A&ndash;to&ndash;Z list of all my recipes</a></li>
         </ul>
     </section>
 
