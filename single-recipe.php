@@ -160,7 +160,7 @@
 // ========================================================================
 
     $recipeDescription = [];
-    $recipeDescriptionTemp = explode("\r", apply_filters('get_the_content', get_the_content()));
+    $recipeDescriptionTemp = explode("\r", apply_filters('get_the_content', get_queried_object()->post_content));
 
     // Clean up the array
     for ($i = 0; $i < count($recipeDescriptionTemp); $i++) {
@@ -183,17 +183,19 @@
 <!-- GINA'S COMMENT -->
 <!-- ======================================================================= -->
 
-    <section class="recommended-item expanded">
-        <div class="row">
-            <div class="small-12 shrink columns">
-                <img class="thumb" src="<?php echo get_template_directory_uri(); ?>/assets/img/gina_lioti_advice.jpg">
+    <?php if (count($recipeDescription) > 0) { ?>
+        <section class="recommended-item expanded">
+            <div class="row">
+                <div class="small-12 shrink columns">
+                    <img class="thumb" src="<?php echo get_template_directory_uri(); ?>/assets/img/gina_lioti_advice.jpg">
+                </div>
+                <div class="columns">
+                    <p class="lead">&ldquo;<?php echo $recipeDescription[0]; ?>&rdquo;</p>
+                    <cite>Gina Lioti</cite>
+                </div>
             </div>
-            <div class="columns">
-                <p class="lead">&ldquo;<?php echo $recipeDescription[0]; ?>&rdquo;</p>
-                <cite>Gina Lioti</cite>
-            </div>
-        </div>
-    </section>
+        </section>
+    <?php } ?>
 
 
 
