@@ -3,7 +3,7 @@
         <div class="row">
             <div class="large-12 columns">
                 <strong>Thank you!</strong> <br>
-                <small>© 2014-<?php echo date("Y") ?>, Gina Lioti. All rights reserved. Join me on <a href="https://www.facebook.com/ginalioticooking" style="display: inline">Facebook</a>, <a href="https://twitter.com/GinaLioti" style="display: inline">Twitter</a>, <a href="https://www.pinterest.com/ginalioti/" style="display: inline">Pinterest</a> and <a href="https://www.instagram.com/ginalioti" style="display: inline;">Instagram</a>.</small>
+                <small>&copy; 2014&ndash;<?php echo date("Y") ?>, <a class="display-inline" href="/hello">Gina Lioti</a>. All rights reserved. Join me on <a href="https://www.facebook.com/ginalioticooking" style="display: inline">Facebook</a>, <a href="https://twitter.com/GinaLioti" style="display: inline">Twitter</a>, <a href="https://www.pinterest.com/ginalioti/" style="display: inline">Pinterest</a> and <a href="https://www.instagram.com/ginalioti" style="display: inline;">Instagram</a>.</small>
                 <div class="margin-top-1">
                     <?php get_template_part( 'partial--site-links' ); ?>
                 </div>

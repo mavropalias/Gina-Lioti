@@ -1,25 +1,22 @@
 .cooking-club-preview {
-    background-color: #110703;
-    color: $white;
+    background-color: $light-gray;
+    border-radius: $global-radius;
+    overflow: hidden;
 
     .cooking-club-image {
         background: url(assets/img/gina_lioti_cooking_club.jpg) center right;
         background-size: cover;
-        min-height: 50vh;
+        min-height: 30vh;
 
-        @include breakpoint(large up) {
-            min-height: 80vh;
+        @include breakpoint(medium up) {
+            min-height: 40vh;
         }
     }
 
     .cooking-club-copy {
-        padding-top: 40px;
-        padding-bottom: 40px;
-        min-height: 50vh;
+        padding: $global-padding;
 
         @include breakpoint(large up) {
-            padding-top: 0;
-            padding-bottom: 0;
         }
     }
 }

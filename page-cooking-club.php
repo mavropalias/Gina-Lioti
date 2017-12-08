@@ -2,8 +2,10 @@
 
 <style>
     body {
-        background-color: #110703;
+        /* background-color: #110703; */
     }
 </style>
 
 <?php get_template_part( 'partial--cooking-club-preview' ); ?>
+
+<?php get_footer(); ?>

@@ -1734,7 +1734,7 @@ figure {
 code {
   padding: 0.1rem 0.25rem 0.05rem;
   border: 1px solid #cccccc;
-  background-color: #eeeeee;
+  background-color: #f5f5f5;
   font-family: Consolas, "Liberation Mono", Courier, monospace;
   font-weight: normal;
   color: #333333; }
@@ -1742,7 +1742,7 @@ code {
 kbd {
   margin: 0;
   padding: 0.1rem 0.2rem 0;
-  background-color: #eeeeee;
+  background-color: #f5f5f5;
   font-family: Consolas, "Liberation Mono", Courier, monospace;
   color: #333333;
   border-radius: 8px; }
@@ -2159,7 +2159,7 @@ textarea::placeholder {
 input:disabled, input[readonly],
 textarea:disabled,
 textarea[readonly] {
-  background-color: #eeeeee;
+  background-color: #f5f5f5;
   cursor: not-allowed; }
 
 [type='submit'],
@@ -2230,7 +2230,7 @@ label {
 .input-group-label {
   padding: 0 1rem;
   border: 1px solid #cccccc;
-  background: #eeeeee;
+  background: #f5f5f5;
   color: #333333;
   text-align: center;
   white-space: nowrap;
@@ -2312,7 +2312,7 @@ select {
     box-shadow: 0 0 5px #cccccc;
     transition: box-shadow 0.5s, border-color 0.25s ease-in-out; }
   select:disabled {
-    background-color: #eeeeee;
+    background-color: #f5f5f5;
     cursor: not-allowed; }
   select::-ms-expand {
     display: none; }
@@ -2424,7 +2424,7 @@ select {
     color: #333333; }
     .pagination a:hover,
     .pagination button:hover {
-      background: #eeeeee; }
+      background: #f5f5f5; }
   .pagination .current {
     padding: 0.15rem 0.5rem;
     background: #B3213D;
@@ -2905,6 +2905,21 @@ select {
   padding-top: 2.4rem !important;
   padding-bottom: 2.4rem !important; }
 
+.display-inline {
+  display: inline !important; }
+
+.display-inline-block {
+  display: inline-block !important; }
+
+.display-block {
+  display: block !important; }
+
+.display-table {
+  display: table !important; }
+
+.display-table-cell {
+  display: table-cell !important; }
+
 body {
   counter-reset: item;
   font-kerning: normal;
@@ -3094,7 +3109,7 @@ a {
     counter-increment: item;
     display: flex;
     align-items: baseline;
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 1px solid #f5f5f5;
     padding: 0.8rem 0;
     margin-left: -0.4rem;
     margin-right: -0.4rem; }
@@ -3127,7 +3142,7 @@ a {
   margin: 0; }
   .list-view .list-item {
     position: relative;
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 1px solid #f5f5f5;
     padding: 0.4rem 16px; }
     .list-view .list-item.has-indicator a:after {
       font-family: "Ionicons";
@@ -3229,23 +3244,18 @@ nav {
         color: #B3213D; }
 
 .cooking-club-preview {
-  background-color: #110703;
-  color: #fefefe; }
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  overflow: hidden; }
   .cooking-club-preview .cooking-club-image {
     background: url(assets/img/gina_lioti_cooking_club.jpg) center right;
     background-size: cover;
-    min-height: 50vh; }
-    @media screen and (min-width: 64em) {
+    min-height: 30vh; }
+    @media screen and (min-width: 40em) {
       .cooking-club-preview .cooking-club-image {
-        min-height: 80vh; } }
+        min-height: 40vh; } }
   .cooking-club-preview .cooking-club-copy {
-    padding-top: 40px;
-    padding-bottom: 40px;
-    min-height: 50vh; }
-    @media screen and (min-width: 64em) {
-      .cooking-club-preview .cooking-club-copy {
-        padding-top: 0;
-        padding-bottom: 0; } }
+    padding: 0.8rem; }
 
 .cooking-club-preview-mini {
   background-color: #B3213D;

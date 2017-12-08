@@ -1,16 +1,19 @@
 <!-- COOKING CLUB PREVIEW -->
-<section class="row cooking-club-preview">
+<section class="row">
     <div class="columns">
-        <div class="row">
-            <div class="small-12 medium-12 large-6 columns cooking-club-image"></div>
-            <div class="columns  align-center align-middle cooking-club-copy">
-                <h3>Join my Cooking Club</h3>
-                <p class="lead">
-                    &ldquo;I want to show you the absolute best of Greek cuisine. Learn to cook delicious, healthy and easy dishes. Exclusive to members.&rdquo;
-                </p>
-                <?php echo do_shortcode('[mc4wp_form]'); ?>
-                <small>Test it out; it only takes a single click to unsubscribe</small>
-                <cite>Gina Lioti</cite>
+        <div class="cooking-club-preview">
+            <section class="row">
+                <div class="small-12 medium-12 large-6 columns cooking-club-image"></div>
+                <div class="columns flex-container align-center align-middle">
+                    <div class="cooking-club-copy">
+                        <h3>Gina Lioti Cooking Club</h3>
+                        <p class="">
+                            &ldquo;I want to show you the absolute best of the Greek cuisine. Learn to cook delicious, healthy and easy dishes. Exclusive to members.&rdquo;
+                            <cite>Gina Lioti</cite>
+                        </p>
+                        <?php echo do_shortcode('[mc4wp_form]'); ?>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
