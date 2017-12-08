@@ -186,7 +186,7 @@
     <?php if (count($recipeDescription) > 0) { ?>
         <section class="recommended-item expanded">
             <div class="row">
-                <div class="small-12 shrink columns">
+                <div class="shrink columns">
                     <img class="thumb" src="<?php echo get_template_directory_uri(); ?>/assets/img/gina_lioti_advice.jpg">
                 </div>
                 <div class="columns">
