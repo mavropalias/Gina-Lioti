@@ -49,7 +49,7 @@
                     ),
                 'image_size' => 'post-thumbnail'
             ) );
-            ?>
+        ?>
     </div>
 
 

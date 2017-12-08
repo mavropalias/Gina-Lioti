@@ -26,7 +26,7 @@
             <li class="ingredient">
                 <a class="ingredient-inner"
                     title="<?php echo ucfirst($ingredient->name); ?> recipes"
-                    href="<?php echo get_category_link($ingredient->term_id); ?>">
+                    href="<?php echo get_term_link($ingredient->term_id); ?>">
                     <div class="ingredient-thumb">
                         <div class="hexagon-1">
                             <div class="hexagon-2" title="<?php echo ucfirst($ingredient->name); ?>" style="background-image: url(<?php echo wp_get_attachment_image_url($ingredient->image_id, 'ingredient-thumb'); ?>); background-image: -webkit-image-set(url(<?php echo wp_get_attachment_image_url($ingredient->image_id, 'ingredient-thumb'); ?>) 1x, url(<?php echo wp_get_attachment_image_url($ingredient->image_id, 'ingredient-thumb-2x'); ?>) 2x, url(<?php echo wp_get_attachment_image_url($ingredient->image_id, 'ingredient-thumb-3x'); ?>) 3x);"></div>

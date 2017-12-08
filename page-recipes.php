@@ -37,10 +37,10 @@
         $query = new WP_Query( $args );
 
         // The Loop ?>
-        <?php 
-        if ( $query->have_posts() ) { 
-            $query->the_post(); 
-            
+        <?php
+        if ( $query->have_posts() ) {
+            $query->the_post();
+
             $do_not_duplicate[] = $post->ID;
 
             $recipeDescription = [];
@@ -58,7 +58,7 @@
                 }
             }
             ?>
-            
+
             <section class="recommended-item expanded">
                 <div class="row">
                     <div class="shrink columns">
@@ -125,7 +125,7 @@
 
         if ($query->found_posts > 0) {
             foreach ($query->posts as $recipe) $do_not_duplicate[] = $recipe->ID;
-            
+
             set_query_var( 'recipesToPreviewTitle', "New recipes" );
             set_query_var( 'recipesToPreviewDescription', "The latest and greatest." );
             set_query_var( 'recipesToPreview', $query->posts );
@@ -161,7 +161,7 @@
 
         if ($query->found_posts > 0) {
             foreach ($query->posts as $recipe) $do_not_duplicate[] = $recipe->ID;
-            
+
             set_query_var( 'recipesToPreviewTitle', "Main-dish recipes" );
             set_query_var( 'recipesToPreviewDescription', "Souvlaki, Gyros, Pastitsio and other traditional Greek dishes with funny names. Some international recipes, too." );
             set_query_var( 'recipesToPreview', $query->posts );
@@ -197,7 +197,7 @@
 
         if ($query->found_posts > 0) {
             foreach ($query->posts as $recipe) $do_not_duplicate[] = $recipe->ID;
-            
+
             set_query_var( 'recipesToPreviewTitle', "Vegetarian recipes" );
             set_query_var( 'recipesToPreviewDescription', "Mains, savouries and sweets without meat." );
             set_query_var( 'recipesToPreview', $query->posts );
@@ -233,7 +233,7 @@
 
         if ($query->found_posts > 0) {
             foreach ($query->posts as $recipe) $do_not_duplicate[] = $recipe->ID;
-            
+
             set_query_var( 'recipesToPreviewTitle', "Sweet recipes" );
             set_query_var( 'recipesToPreviewDescription', "Spoon desserts, syrupy treats, cakes and other Greek / International sweets. Eat in moderation!" );
             set_query_var( 'recipesToPreview', $query->posts );
@@ -269,7 +269,7 @@
 
         if ($query->found_posts > 0) {
             foreach ($query->posts as $recipe) $do_not_duplicate[] = $recipe->ID;
-            
+
             set_query_var( 'recipesToPreviewTitle', "Savoury recipes" );
             set_query_var( 'recipesToPreviewDescription', "Sides, salads, pittas and other savoury delicacies." );
             set_query_var( 'recipesToPreview', $query->posts );
@@ -305,7 +305,7 @@
 
         if ($query->found_posts > 0) {
             foreach ($query->posts as $recipe) $do_not_duplicate[] = $recipe->ID;
-            
+
             set_query_var( 'recipesToPreviewTitle', "Gluten-free recipes" );
             set_query_var( 'recipesToPreviewDescription', "No gluten in these." );
             set_query_var( 'recipesToPreview', $query->posts );
@@ -341,7 +341,7 @@
 
         if ($query->found_posts > 0) {
             foreach ($query->posts as $recipe) $do_not_duplicate[] = $recipe->ID;
-            
+
             set_query_var( 'recipesToPreviewTitle', "More recipes" );
             set_query_var( 'recipesToPreviewDescription', "These might captivate you." );
             set_query_var( 'recipesToPreview', $query->posts );

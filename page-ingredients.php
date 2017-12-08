@@ -10,14 +10,15 @@
     // Get all ingredients
     $ingredients_raw = get_terms( $args );
 
-    // Keep only ingredients with photos
-    $ingredients_with_photos = [];
-    foreach( $ingredients_raw as $ingredient ) {
-        if (strlen(z_taxonomy_image_url($ingredient->term_id)) > 0) $ingredients_with_photos[] = $ingredient; 
-    }
+    // Get ingredients with images
+    $ingredients_with_photos = apply_filters( 'taxonomy-images-get-terms', '', array(
+        'taxonomy' => 'ingredient'
+    ) );
 
+    // Shuffle ingredient list every time
     shuffle($ingredients_with_photos);
 
+    // Shuffle ingredient list every time
     $ingredients = array_slice($ingredients_with_photos, 0, $max_ingredients);
 
     // print_r($ingredients);
@@ -33,7 +34,10 @@
 
 <!-- INGREDIENT OF THE WEEK -->
 <!-- ======================================================================= -->
-    
+
+    <?php
+        // print_r($ingredients[0]);
+    ?>
     <section class="recommended-item expanded">
         <div class="row">
             <div class="shrink columns">
@@ -45,14 +49,16 @@
             </div>
         </div>
         <div class="row column">
-            <a href="<?php echo get_category_link($ingredients[0]->term_id); ?>"><h2><?php echo ucfirst($ingredients[0]->name); ?></h2></a>
+            <a href="<?php echo get_term_link($ingredients[0]->term_id); ?>"><h2><?php echo ucfirst($ingredients[0]->name); ?></h2></a>
         </div>
         <div class="row expanded">
-            <a href="<?php echo get_category_link($ingredients[0]->term_id); ?>">
-                <?php 
-                    if (function_exists('z_taxonomy_image')) {
-                        z_taxonomy_image($ingredients[0]->term_id, 'post-thumbnail', array( 'class' => 'cover-photo' ) ); 
-                    }
+            <a href="<?php echo get_term_link($ingredients[0]->term_id); ?>">
+                <?php
+                    echo wp_get_attachment_image ($ingredients[0]->image_id, 'post-thumbnail', '', array(
+                        'class' => 'cover-photo',
+                        'alt' => $ingredients[0]->name,
+                        'title' => "Click to see recipes made with ".$ingredients[0]->name
+                    ));
                 ?>
             </a>
         </div>
@@ -64,7 +70,7 @@
 
 <!-- FEATURED INGREDIENTS -->
 <!-- ======================================================================= -->
-    
+
     <?php get_template_part( 'partial--ingredients-preview' ); ?>
 
 
@@ -82,14 +88,14 @@
         <ul class="ingredients-view">
             <?php foreach( $ingredients_raw as $ingredient ) { ?>
                 <li class="ingredient">
-                    <a class="ingredient-inner" 
+                    <a class="ingredient-inner"
                         title="<?php echo ucfirst($ingredient->name); ?> recipes"
-                        href="<?php echo get_category_link($ingredient->term_id); ?>">
+                        href="<?php echo get_term_link($ingredient->term_id); ?>">
                         <div class="ingredient-thumb">
                             <div class="hexagon-1">
-                                <div class="hexagon-2" title="<?php echo ucfirst($ingredient->name); ?>" style="background-image: url(<?php 
+                                <div class="hexagon-2" title="<?php echo ucfirst($ingredient->name); ?>" style="background-image: url(<?php
                                     if (function_exists('z_taxonomy_image_url')) {
-                                        echo(z_taxonomy_image_url($ingredient->term_id, 'ingredient-thumb' )); 
+                                        echo(z_taxonomy_image_url($ingredient->term_id, 'ingredient-thumb' ));
                                     }?>);"></div>
                             </div>
                         </div>
