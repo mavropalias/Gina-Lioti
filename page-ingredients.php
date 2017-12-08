@@ -8,7 +8,10 @@
     );
 
     // Get all ingredients
-    $ingredients_raw = get_terms( $args );
+    $ingredients_raw = apply_filters( 'taxonomy-images-get-terms', '', array(
+        'taxonomy' => 'ingredient',
+        'having_images' => false
+    ) );
 
     // Get ingredients with images
     $ingredients_with_photos = apply_filters( 'taxonomy-images-get-terms', '', array(
@@ -93,10 +96,7 @@
                         href="<?php echo get_term_link($ingredient->term_id); ?>">
                         <div class="ingredient-thumb">
                             <div class="hexagon-1">
-                                <div class="hexagon-2" title="<?php echo ucfirst($ingredient->name); ?>" style="background-image: url(<?php
-                                    if (function_exists('z_taxonomy_image_url')) {
-                                        echo(z_taxonomy_image_url($ingredient->term_id, 'ingredient-thumb' ));
-                                    }?>);"></div>
+                                <div class="hexagon-2" title="<?php echo ucfirst($ingredient->name); ?>" style="background-image: url(<?php echo wp_get_attachment_image_url($ingredient->image_id, 'ingredient-thumb'); ?>); background-image: -webkit-image-set(url(<?php echo wp_get_attachment_image_url($ingredient->image_id, 'ingredient-thumb'); ?>) 1x, url(<?php echo wp_get_attachment_image_url($ingredient->image_id, 'ingredient-thumb-2x'); ?>) 2x, url(<?php echo wp_get_attachment_image_url($ingredient->image_id, 'ingredient-thumb-3x'); ?>) 3x);"></div>
                             </div>
                         </div>
                         <div class="ingredient-details">
