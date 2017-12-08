@@ -2945,6 +2945,14 @@ body {
 button,
 .button {
   font-weight: 700; }
+  button.secondary,
+  .button.secondary {
+    color: #B3213D;
+    background-color: #f5f5f5; }
+    button.secondary:hover,
+    .button.secondary:hover {
+      background-color: #B3213D;
+      color: #fefefe; }
 
 .expanded {
   justify-content: center; }

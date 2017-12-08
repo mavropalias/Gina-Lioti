@@ -31,6 +31,16 @@ body {
 button,
 .button {
     font-weight: 700;
+
+    &.secondary {
+        color: get-color(primary);
+        background-color: $light-gray;
+
+        &:hover {
+            background-color: get-color(primary);
+            color: $white;
+        }
+    }
 }
 
 .expanded {
