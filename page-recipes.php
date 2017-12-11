@@ -19,7 +19,7 @@
             <?php get_template_part( 'partial--site-links' ); ?>
         </div>
         <ul class="list-view">
-            <li class="list-item has-indicator"><a href="recipes-a-to-z">See the A&ndash;to&ndash;Z list of all my recipes</a></li>
+            <li class="list-item has-indicator"><a href="recipes-a-to-z">See the A&ndash;to&ndash;Z list of all recipes</a></li>
         </ul>
     </section>
 
@@ -68,7 +68,7 @@
                         <img class="thumb" src="<?php echo get_template_directory_uri(); ?>/assets/img/gina_lioti_advice.jpg">
                     </div>
                     <div class="columns">
-                        <p>My recipe of the week is:</p>
+                        <p>The recipe of the week is:</p>
                         <a href="<?php the_permalink(); ?>"><h2><?php the_title(); ?></h2></a>
                         <p class="lead">"<?php echo $recipeDescription[0]; ?>"</p>
                         <cite>Gina Lioti</cite>
