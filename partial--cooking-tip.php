@@ -1,5 +1,5 @@
 <!-- COOKING TIP -->
-<section>
+<section class="hide">
     <div class="row column">
         <h2>Cooking tip</h2>
         <p class="tip">
@@ -16,10 +16,11 @@
                 <?php while ( $query->have_posts() ) : $query->the_post() ; ?>
 
                     <!--<em><a style="display: inline;" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></em> &mdash; -->
-                    <?php echo wp_strip_all_tags( get_the_content() ); ?>
+                    <p class="lead">&ldquo;<?php echo wp_strip_all_tags( get_the_content() ); ?>&rdquo;</p>
+                    <cite>Gina Lioti</cite>
 
                 <?php endwhile; ?>
-            
+
             <?php }
                 /* Restore original Post Data */
                 wp_reset_postdata();
