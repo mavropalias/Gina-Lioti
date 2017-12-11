@@ -1599,7 +1599,7 @@ h5, .h5,
 h6, .h6 {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
   font-style: normal;
-  font-weight: 900;
+  font-weight: 700;
   color: inherit;
   text-rendering: optimizeLegibility; }
   h1 small, .h1 small,
@@ -2927,8 +2927,10 @@ body {
   font-variant-numeric: lining-nums tabular-nums;
   font-feature-settings: "kern", "liga", "clig", "calt", "lnum", "tnum"; }
   @media screen and (min-width: 64em) {
-    body > main {
+    body:not(.home) > main {
       margin-top: 1.6rem; } }
+  body.home header {
+    background-color: white; }
   body > main > * {
     margin: 0 auto; }
     body > main > *:not(.expanded) {
@@ -2954,6 +2956,9 @@ button,
       background-color: #B3213D;
       color: #fefefe; }
 
+h1 {
+  font-weight: 900; }
+
 .expanded {
   justify-content: center; }
 
@@ -2974,6 +2979,8 @@ button,
 
 .title {
   font-weight: 900;
+  line-height: 1;
+  margin-bottom: 0.2rem;
   margin-top: 1.6rem; }
   @media screen and (min-width: 40em) {
     .title {

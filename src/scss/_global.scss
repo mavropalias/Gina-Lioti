@@ -7,11 +7,21 @@ body {
     font-variant-numeric: lining-nums tabular-nums;
     font-feature-settings: "kern", "liga", "clig", "calt", "lnum", "tnum";
 
-    & > main {
-        @include breakpoint(large up) {
-            margin-top: $global-margin * 2;
+    &:not(.home) {
+        & > main {
+            @include breakpoint(large up) {
+                margin-top: $global-margin * 2;
+            }
         }
+    }
 
+    &.home {
+        header {
+            background-color: white;
+        }
+    }
+
+    & > main {
         & > * {
             margin: 0 auto;
 
@@ -41,6 +51,10 @@ button,
             color: $white;
         }
     }
+}
+
+h1 {
+    font-weight: 900;
 }
 
 .expanded {

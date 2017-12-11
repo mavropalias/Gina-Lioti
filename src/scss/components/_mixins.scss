@@ -23,8 +23,9 @@
     .medium { font-weight: 500; }
 
     .title {
-        // font-size: rem-calc(60);
         font-weight: 900;
+        line-height: 1;
+        margin-bottom: $global-margin/4;
         margin-top: $global-margin * 2;
 
         @include breakpoint(medium up) {
