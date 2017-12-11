@@ -1,11 +1,11 @@
 <?php get_header(); ?>
-<?php 
+<?php
     global $query_string;
 ?>
 
     <section>
         <div class="row column">
-            <h1 class="title">Search recipes</h1>
+            <h1 class="title">Search</h1>
         </div>
 
         <form action="/" method="get">
@@ -57,7 +57,7 @@
                     default:
                         break;
                 }
-            } 
+            }
 
             if (strlen($search_term) > 0 || strlen($search_tag) > 0) {
                 $search_query_args = array(
@@ -92,7 +92,7 @@
                         </div>
                     </section>
                     <?php get_template_part( 'partial--cooking-club-preview' ); ?>
-                <? }                
+                <? }
             }
         }
     ?>

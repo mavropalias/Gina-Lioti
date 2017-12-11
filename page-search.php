@@ -2,7 +2,7 @@
 
     <section>
         <div class="row column">
-            <h1 class="title">Search recipes</h1>
+            <h1 class="title">Search</h1>
         </div>
 
         <form action="/" method="get">

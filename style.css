@@ -2977,19 +2977,33 @@ h1 {
 .medium {
   font-weight: 500; }
 
-.title {
-  font-weight: 900;
-  line-height: 1;
-  margin-bottom: 0.2rem;
-  margin-top: 1.6rem; }
-  @media screen and (min-width: 40em) {
-    .title {
-      margin-top: 2.4rem; } }
+.title-container {
+  background-color: white;
+  position: relative;
+  z-index: 10; }
+  .title-container .title {
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 0.2rem;
+    margin-top: 1.6rem; }
+    @media screen and (min-width: 40em) {
+      .title-container .title {
+        margin-top: 2.4rem; } }
 
 .cover-photo {
   max-height: calc(100vh - 8rem);
   width: auto;
   margin: 0 auto; }
+
+.mega-photo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 9; }
 
 .button--view-more:after {
   content: "\f125";
@@ -3192,7 +3206,6 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  border-bottom: 1px solid #f5f5f5;
   z-index: 999; }
   @media screen and (min-width: 64em) {
     header {
