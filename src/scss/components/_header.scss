@@ -1,11 +1,10 @@
 header {
     width: 100vw;
     max-width: initial;
-    background-color: #eee;
+    background-color: $light-gray;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    padding: $global-padding;
     z-index: 999;
 
     @include breakpoint(large up) {

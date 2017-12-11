@@ -3192,7 +3192,6 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  border-bottom: 1px solid #f5f5f5;
   z-index: 999; }
   @media screen and (min-width: 64em) {
     header {
