@@ -3140,7 +3140,7 @@ a {
       font-size: 1.2rem;
       font-weight: 700;
       content: counter(item);
-      width: 1.6rem;
+      width: 2rem;
       margin-left: 0.4rem;
       flex-shrink: 0; }
       @media screen and (min-width: 40em) {

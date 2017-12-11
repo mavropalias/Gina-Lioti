@@ -308,7 +308,7 @@
                 font-size: rem-calc(24);
                 font-weight: 700;
                 content: counter(item);
-                width: $global-margin * 2;
+                width: 2rem;
                 margin-left: $global-margin/2;
                 flex-shrink: 0;
 
