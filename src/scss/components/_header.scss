@@ -23,9 +23,11 @@ header {
         .app-logo {
             width: rem-calc(213);
             max-width: 80vw;
+            margin: map-get($map: $grid-column-gutter, $key: medium)/4 0;
 
             @include breakpoint(large up) {
                 padding-right: $global-padding;
+                margin: 0;
             }
         }
     }

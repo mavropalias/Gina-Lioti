@@ -22,15 +22,36 @@
 }
 
 .cooking-club-preview-mini {
-    background-color: $brand-color;
-    color: $white;
     padding: $global-margin/2 0;
+    border-bottom: 1px solid $light-gray;
 
-    .input-group {
-        margin-bottom: 0;
+    form {
+        .form-fields {
+            display: flex;
 
-        input {
-            max-width: none !important;
+            .columns {
+                flex: none;
+
+                &:first-child {
+                    flex: 1;
+                }
+
+                .form-label {
+                    display: none;
+                }
+
+                input[type="email"] {
+                    margin: 0 map-get($map: $grid-column-gutter, $key: medium)/4 0 0;
+                    line-height: rem-calc(44);
+                    height: rem-calc(44);
+                }
+
+                input[type="submit"] {
+                    margin: 0 0 0 map-get($map: $grid-column-gutter, $key: medium)/4;
+                    padding: 0 map-get($grid-column-gutter, medium)/2;
+                    line-height: rem-calc(44);
+                }
+            }
         }
     }
 }
