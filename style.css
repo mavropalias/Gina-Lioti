@@ -2943,6 +2943,10 @@ body {
       margin-bottom: 2.5rem; }
     body > main > section.section--with-separator {
       border-bottom: 1px solid #cccccc; }
+    body > main > section.section--meta {
+      border-bottom: 1px solid #cccccc; }
+      body > main > section.section--meta .row {
+        margin-bottom: -1px; }
 
 button,
 .button {

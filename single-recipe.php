@@ -76,7 +76,7 @@
 <!-- META INFO -->
 <!-- ======================================================================= -->
 
-    <section class="section--mini">
+    <section class="section--mini section--meta">
         <?php
             // Count how many grid items will be displayed
             $gridCount = count(wp_get_post_terms($post->ID, 'post_tag'));

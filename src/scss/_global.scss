@@ -34,6 +34,13 @@ body {
 
             &.section--mini { margin-bottom: $section-margin-bottom/2; }
             &.section--with-separator { border-bottom: 1px solid $medium-gray; }
+            &.section--meta {
+                border-bottom: 1px solid $medium-gray;
+
+                .row {
+                    margin-bottom: -1px;
+                }
+            }
         }
     }
 }
