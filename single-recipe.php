@@ -209,7 +209,7 @@
             <div class="row column">
                 <h2>Here’s why you’re going to love this</h2>
 
-                <p class="lead"><?php echo $recipeDescription[1]; ?></p>
+                <p class=""><?php echo $recipeDescription[1]; ?></p>
 
                 <?php if (count($recipeDescription) > 2) {
                     for ($i = 2; $i < count($recipeDescription); $i++) { ?>
