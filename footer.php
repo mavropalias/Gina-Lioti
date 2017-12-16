@@ -4,7 +4,7 @@
             <div class="large-12 columns">
                 <strong>Thank you!</strong> <br>
                 <small>&copy; 2014&ndash;<?php echo date("Y") ?>, <a class="display-inline" href="/hello">Gina Lioti</a>. All rights reserved. Join me on <a href="https://www.facebook.com/ginalioticooking" style="display: inline">Facebook</a>, <a href="https://twitter.com/GinaLioti" style="display: inline">Twitter</a>, <a href="https://www.pinterest.com/ginalioti/" style="display: inline">Pinterest</a> and <a href="https://www.instagram.com/ginalioti" style="display: inline;">Instagram</a>.</small>
-                <div class="margin-top-1">
+                <div class="margin-top-2">
                     <?php get_template_part( 'partial--site-links' ); ?>
                 </div>
             </div>
